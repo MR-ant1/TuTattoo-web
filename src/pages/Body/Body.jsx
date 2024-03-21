@@ -1,13 +1,13 @@
 
 import { Route, Routes } from "react-router-dom"
-import { servicesHome } from "../servicesHome/servicesHome"
+import { Home } from "../Home/Home"
 import { Register } from "../Register/Register"
 
 export const Body = () => {
     
     return (
         <Routes>
-            <Route path="/" element={<servicesHome />} />
+            <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
 
         </Routes>
