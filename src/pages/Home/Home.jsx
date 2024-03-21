@@ -1,5 +1,5 @@
 
-import "./servicesWelcome.css"
+import "./Home.css"
 
 export const Home = () => {
 
