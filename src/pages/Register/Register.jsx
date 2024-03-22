@@ -91,7 +91,7 @@ export const Register = () => {
             <CInput
                 className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
                     }`}
-                type={"text"}
+                type={"email"}
                 placeholder={"email"}
                 name={"email"}
                 value={user.email || ""}
@@ -102,7 +102,7 @@ export const Register = () => {
             <CInput
                 className={`inputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""
                     }`}
-                type={"text"}
+                type={"password"}
                 placeholder={"password"}
                 name={"password"}
                 value={user.password || ""}
