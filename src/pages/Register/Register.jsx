@@ -1,6 +1,7 @@
 
 import { useState } from "react"
 import { CInput } from "../../common/CInput/CInput"
+import { CButton } from "../../common/CButton/CButton"
 import "./Register.css"
 
 export const Register = () => {
@@ -12,7 +13,14 @@ const [user, setUser] = useState({
 })
  
 const inputHandler = (e) => {
-    console.log(e.target.value)
+    setUser((prevState) => ({
+        ...prevState,
+        [e.target.name]: [e.target.value]
+    }))
+}
+
+const registration = () => {
+    console.log("register Botton")
 }
 return (
     <div className="registerDesign">
@@ -47,6 +55,11 @@ return (
             name={"password"}
             value={user.password || ""}
             onChangeFunction={(e) => inputHandler(e)}
+        />
+        <CButton
+            className={"cButtonDesign"}
+            title={"Register"}
+            functionEmit={registration}
         />
     </div>
 )
