@@ -1,4 +1,5 @@
 
+
 import { useNavigate } from "react-router-dom"
 import { validame } from "../../utils/functions";
 import { useState, useEffect } from "react";
@@ -8,13 +9,16 @@ import { LoginUser } from "../../services/api.calls";
 import "./Login.css"
 
 
-export const [decodificado, token] = JSON.parse(localStorage.getItem("passport"))
+
+
 
 export const Login = () => {
 
+    const tokenData = JSON.parse(localStorage.getItem("passport"))
     const navigate = useNavigate()
 
-    const [tokenStorage, setTokenStorage] = useState(token)
+    // eslint-disable-next-line no-unused-vars
+    const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
     const [accessData, setAccessData] = useState({
         email: "",
@@ -65,16 +69,16 @@ export const Login = () => {
     
             const passport = {
                 token: fetched.token,
-                decodificado: decodificado
+                decodificado: decodificado,
             }
     
             localStorage.setItem("passport", JSON.stringify(passport))
     
-            setMsgError(`Hola ${decodificado.name}, nos alegra verte por tuTattoo!`)
+            setMsgError(`Hola de nuevo, nos alegra verte por tuTattoo!`)
     
             setTimeout(()=>{
               navigate("/")
-            },2000)
+            },1000)
     
           } catch (error) {
             setMsgError(error.message);
