@@ -29,7 +29,7 @@ export const RegisterUser = async (user) => {
     
 }
 
-export const Login = async (accessData) => {
+export const LoginUser = async (accessData) => {
 
     const clientData = {
         method: "POST",

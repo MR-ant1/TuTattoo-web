@@ -1,18 +1,20 @@
 
 import { useNavigate } from "react-router-dom"
 import { validame } from "../../utils/functions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CInput } from "../../common/CInput/CInput";
 import { CButton } from "../../common/CButton/CButton";import { decodeToken } from "react-jwt";
-import { Login } from "../../services/api.calls";
+import { LoginUser } from "../../services/api.calls";
 import "./Login.css"
 
 
+export const [decodificado, token] = JSON.parse(localStorage.getItem("passport"))
 
-
-export const Loginuser = () => {
+export const Login = () => {
 
     const navigate = useNavigate()
+
+    const [tokenStorage, setTokenStorage] = useState(token)
 
     const [accessData, setAccessData] = useState({
         email: "",
@@ -25,6 +27,12 @@ export const Loginuser = () => {
       });
     
       const [msgError, setMsgError] = useState("");
+
+      useEffect(() => {
+        if (tokenStorage) {
+            navigate("/")
+        }
+      }, [tokenStorage])
     
     
       const inputHandler = (e) => {
@@ -51,7 +59,7 @@ export const Loginuser = () => {
               }
             }
     
-            const fetched = await Login(accessData);
+            const fetched = await LoginUser(accessData);
     
             const decodificado = decodeToken(fetched.token)
     

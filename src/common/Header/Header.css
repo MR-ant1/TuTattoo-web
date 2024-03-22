@@ -11,3 +11,8 @@
 
     background-color: blue;
 }
+
+.authmenu {
+    display: flex;
+    flex-direction: row;
+}
