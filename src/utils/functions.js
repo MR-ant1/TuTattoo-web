@@ -1,13 +1,13 @@
 export const validame = (type, value) => {
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,14}$/;
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    // eslint-disable-next-line no-useless-escape
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
     switch (type) {
         case "name":
         case "nombre":
         case "surname":
-        case "cognom":
         case "firstName":
         case "lastName":
           if (value.length < 3) {
@@ -36,7 +36,7 @@ export const validame = (type, value) => {
     
           return "";
         default:
-          console.log("whattttttttttt???");
+          console.log("No matches found")
       }
 
 }
