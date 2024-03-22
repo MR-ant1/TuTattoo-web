@@ -10,3 +10,8 @@
 
     background-color: rgb(210, 210, 208);
 }
+
+.error {
+    height: 1em;
+    color: red
+}

@@ -1,7 +1,8 @@
 
 import "./CInput.css"
 
-export const CInput = ({className, type, placeholder, name, value, onChangeFunction}) => {
+// eslint-disable-next-line react/prop-types
+export const CInput = ({className, type, placeholder, name, value, onChangeFunction, onBlurFunction}) => {
 
     return(
         <input
@@ -11,6 +12,7 @@ export const CInput = ({className, type, placeholder, name, value, onChangeFunct
             name={name}
             value={value}
             onChange={onChangeFunction}
+            onBlur={onBlurFunction}
         />
     )
 }
