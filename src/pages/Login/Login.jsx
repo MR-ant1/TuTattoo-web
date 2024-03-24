@@ -9,12 +9,10 @@ import { LoginUser } from "../../services/api.calls";
 import "./Login.css"
 
 
-
-
+const tokenData = JSON.parse(localStorage.getItem("passport"))
 
 export const Login = () => {
 
-    const tokenData = JSON.parse(localStorage.getItem("passport"))
     const navigate = useNavigate()
 
     // eslint-disable-next-line no-unused-vars

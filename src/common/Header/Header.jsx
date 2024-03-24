@@ -11,16 +11,20 @@ export const Header = () => {
     const logOut = () => {
         localStorage.removeItem("passport")
         navigate("login")
-    } 
+    }
     //Adding register navigation to allow move from header. Included a token validation to show register and login or icon to profile and log out (future)
     return (
-        <div className = "headerDesign">
+        <div className="headerDesign">
             <Navigator title={"home"} sendTo={"/"} />
-                        
+
             {passport?.token ? (
-                <div>  
-                    <Navigator title={`Mi perfil`} sendTo={"/profile"} />
-                    <Navigator title={"log out"} onClick={() => logOut()} />
+                <div className="authMenu">
+                    <Navigator
+                        title={"Mi Cuenta"} sendTo={"/profile"}
+                    />
+                    <div onClick={logOut}>
+                        <Navigator title={"log out"} sendTo={"/"} />
+                    </div>
                 </div>
             ) : (
                 <div className="authMenu">
