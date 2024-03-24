@@ -54,3 +54,28 @@ export const LoginUser = async (accessData) => {
         return error
     }
 }
+
+export const GetProfile = async (token) => {
+    const clientData = {
+        method: "GET",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    try {
+        const response = await fetch(`${root}users/profile`, clientData)
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}
