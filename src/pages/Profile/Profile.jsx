@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { GetProfile } from "../../services/api.calls"
 import { CInput } from "../../common/CInput/CInput"
 import { validame } from "../../utils/functions"
+import "./Profile.css"
 
 const tokenData = JSON.parse(localStorage.getItem("passport"))
 
