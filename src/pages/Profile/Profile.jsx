@@ -86,6 +86,7 @@ export const Profile = () => {
                         onChangeFunction={(e) => inputHandler(e)}
                         onBlurFunction={(e) => checkError(e)}
                     />
+                    <div className="error">{user.firstNameError}</div>
                     <CInput
                         className={`inputDesign ${userError.lastNameError !== "" ? "inputDesignError" : ""
                             }`}
@@ -96,6 +97,7 @@ export const Profile = () => {
                         onChangeFunction={(e) => inputHandler(e)}
                         onBlurFunction={(e) => checkError(e)}
                     />
+                    <div className="error">{user.lastNameError}</div>
                     <CInput
                         className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
                             }`}
@@ -106,6 +108,7 @@ export const Profile = () => {
                         onChangeFunction={(e) => inputHandler(e)}
                         onBlurFunction={(e) => checkError(e)}
                     />
+                    <div className="error">{user.emailError}</div>
                 </div>
             )}
         </div>
