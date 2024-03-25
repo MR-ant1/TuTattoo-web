@@ -36,7 +36,6 @@ export const Login = () => {
         }
       }, [tokenStorage])
     
-    
       const inputHandler = (e) => {
         setAccessData((prevState) => ({
           ...prevState,

@@ -105,3 +105,27 @@ export const UpdateProfile = async (token, data) => {
         return error
     }
 }
+
+export const GetServices = async () => {
+    const clientData = {
+        method: "GET",
+        headers: {
+            "Content-Type":"application/json",
+        }
+    }
+
+    try {
+        const response = await fetch(`${root}services`, clientData)
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}
