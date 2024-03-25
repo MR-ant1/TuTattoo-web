@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from "react"
 import { GetServices } from "../../services/api.calls"
 import "./Home.css"
 
@@ -6,8 +7,8 @@ export const Home = () => {
 
     //const navigate
 
-    const [dbData, setdbData] = useState(false)
-    const disabled = useState("disabled")
+    const [dbData, setDbData] = useState(false)
+    // const disabled = useState("disabled")
     
     const [services, setServices] = useState({
         serviceName:"",
@@ -21,31 +22,32 @@ export const Home = () => {
     // useEffect para click en card ID?
 
     useEffect(() => {
+        // eslint-disable-next-line no-unused-vars
         const servicesShowcase = async () => {
         try {
-            const fetched = await GetServices()
+            const fetched = await GetServices(services)
 
-            setdbData(true)
+            setDbData(true)
 
             setServices({
                 serviceName: fetched.data.serviceName,
                 description: fetched.data.description
             })
-
+            
         } catch (error) {
             console.log(error)
         }
-        if (!dbData) {
-            servicesShowcase
-        }
+        // if (!dbData) { 
+        //     servicesShowcase()
+        // }
     }}, [services])
 
 return (
     <div className="HomeDesign">
-        {!dbData ? (
+        {setDbData===false ? (
             <div>LOADING</div>
         ) : (
-            <card
+            <div>Aqui irán las cards</div>
         )}
     </div>
 )
