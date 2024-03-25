@@ -15,7 +15,7 @@ export const Header = () => {
     //Adding register navigation to allow move from header. Included a token validation to show register and login or icon to profile and log out (future)
     return (
         <div className="headerDesign">
-            <Navigator title={"home"} sendTo={"/"} />
+            <Navigator title={"Home/Showcase"} sendTo={"/"} />
 
             {passport?.token ? (
                 <div className="authMenu">
