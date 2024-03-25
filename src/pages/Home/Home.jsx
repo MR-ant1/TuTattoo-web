@@ -1,14 +1,15 @@
 
 import { useEffect, useState } from "react"
 import { GetServices } from "../../services/api.calls"
+import { Card } from "../../common/Card/Card"
 import "./Home.css"
 
 export const Home = () => {
 
     //const navigate
 
+    // eslint-disable-next-line no-unused-vars
     const [dbData, setDbData] = useState(false)
-    // const disabled = useState("disabled")
     
     const [services, setServices] = useState({
         serviceName:"",
@@ -25,7 +26,7 @@ export const Home = () => {
         // eslint-disable-next-line no-unused-vars
         const servicesShowcase = async () => {
         try {
-            const fetched = await GetServices(services)
+            const fetched = await GetServices()
 
             setDbData(true)
 
@@ -37,17 +38,56 @@ export const Home = () => {
         } catch (error) {
             console.log(error)
         }
-        // if (!dbData) { 
-        //     servicesShowcase()
-        // }
     }}, [services])
 
 return (
     <div className="HomeDesign">
         {setDbData===false ? (
             <div>LOADING</div>
-        ) : (
-            <div>Aqui irán las cards</div>
+        ) : 
+        (
+            <div>
+                <div className="upServices">
+                <Card
+                className={"cardDesign"}
+                type={"text"}
+                name={"Service"}
+                valuename={services.serviceName}
+                valuedescription={services.description}
+                />
+                <Card
+                className={"cardDesign"}
+                type={"text"}
+                name={"Service"}
+                valueName={services.serviceName}
+                valueDescription={services.description}
+                />
+                </div>
+                <div className="downServices">
+                <Card
+                className={"cardDesign"}
+                type={"text"}
+                name={"Service"}
+                valueName={services.serviceName}
+                valueDescription={services.description}
+                />
+                <Card
+                className={"cardDesign"}
+                type={"text"}
+                name={"Service"}
+                valueName={services.serviceName}
+                valueDescription={services.description}
+                />
+                <Card
+                className={"cardDesign"}
+                type={"text"}
+                name={"Service"}
+                valueName={services.serviceName}
+                valueDescription={services.description}
+                />
+                </div>
+            </div>
+            
         )}
     </div>
 )

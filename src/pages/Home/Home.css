@@ -10,3 +10,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.upServices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.downServices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
