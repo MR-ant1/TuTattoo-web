@@ -82,21 +82,13 @@ export const Profile = () => {
             try {
                 const fetched = await UpdateProfile(tokenStorage, user)
 
-                setUser({
-                    firstName: fetched.data.firstName,
-                    lastName: fetched.data.lastName,
-                })
-
                 setMsgError(fetched.message)
                 console.log(fetched)
 
                 setTimeout(() => {
-                    navigate("/profile")
-                }, 500)
+                    setMsgError("")
+                }, 2000)
 
-                // if (!dbData) {
-                //     Update()
-                // }
             } catch (error) {
                 setMsgError(error.message)
             }
