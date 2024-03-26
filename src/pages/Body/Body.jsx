@@ -4,18 +4,18 @@ import { Home } from "../Home/Home"
 import { Register } from "../Register/Register"
 import { Login } from "../Login/Login"
 import { Profile } from "../Profile/Profile"
-import { CreateAppointment } from "../../services/api.calls"
+import { NewAppointment } from "../CreateAppointment/CreateAppointment"
 
 export const Body = () => {
-    
+
     return (
         <Routes>
-            <Route path="*" element={<Navigate to={"/"} replace/>} />
+            <Route path="*" element={<Navigate to={"/"} replace />} />
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/createAppointment" element={<CreateAppointment />} />
+            <Route path="/createAppointment" element={<NewAppointment />} />
         </Routes>
     )
 }

@@ -80,14 +80,14 @@ export const GetProfile = async (token) => {
     }
 }
 
-export const UpdateProfile = async (token, data) => {
+export const UpdateProfile = async (token, updateData) => {
     const clientData = {
         method: "PUT",
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(updateData)
     }
 
     try {
@@ -130,14 +130,14 @@ export const GetServices = async () => {
     }
 }
 
-export const CreateAppointment = async (data, token) => {
+export const CreateAppointment = async (appointmentData, token) => {
     const clientData = {
         method: "POST",
         headers: {
             "Content-Type":"application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(appointmentData)
     }
     try {
         const response = await fetch(`${root}appointments`, clientData)

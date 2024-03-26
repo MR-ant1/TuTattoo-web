@@ -31,8 +31,6 @@ export const Home = () => {
 
                     setServices(fetched.data)
 
-
-                    console.log(fetched.data)
                 } catch (error) {
                     console.log(error)
                 }
@@ -44,32 +42,31 @@ export const Home = () => {
 
 
     return (
-            <>
-                    {services.length > 0 ? (
-                    <div className="servicesCardsDesign">
-                        {services.slice(0,5).map(
-                            service => {
+        <>
+            {services.length > 0 ? (
+                <div className="servicesCardsDesign">
+                    {services.slice(0, 5).map(
+                        service => {
                             return (
                                 <>
-                                <Card
-                                    key={service.id}
-                                    id={"Nª servicio: " + service.id}
-                                    title={service.serviceName}
-                                    description={service.description}
-                                    clickFunction={() => 
-                                        {if (!tokenData) {
-                                       navigate("/login")
-                                    } else navigate("/createAppointment")
-                                }} 
-                                />
-                               </>
+                                    <Card
+                                        key={service.id}
+                                        id={"Nª servicio: " + service.id}
+                                        title={service.serviceName}
+                                        description={service.description}
+                                        clickFunction={() => {
+                                            // !tokenData ? navigate("/login") :
+                                             navigate("/createAppointment")
+                                        }}
+                                    />
+                                </>
                             )
-                            })}
-                    </div>
-                    ) : (
-                        <div>LOADING</div>
-                    )}
-                 
+                        })}
+                </div>
+            ) : (
+                <div>LOADING</div>
+            )}
+
         </>
     )
 }

@@ -18,6 +18,7 @@ export const Register = () => {
         password: ""
     })
 
+
     const [userError, setUserError] = useState({
         firstNameError: "",
         lastNameError: "",
@@ -31,7 +32,7 @@ export const Register = () => {
     const inputHandler = (e) => {
         setUser((prevState) => ({
             ...prevState,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         }))
     }
 
@@ -43,6 +44,7 @@ export const Register = () => {
             [e.target.name + "Error"]: error
         }))
     }
+    
     const registration = async () => {
         try {
             for (let elemento in user) {

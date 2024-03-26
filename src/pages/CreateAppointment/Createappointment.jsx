@@ -50,8 +50,7 @@ export const NewAppointment = () => {
     //       [e.target.name + "Error"]: error,
     //     }));
     //   };
-    useEffect(() => {
-        
+
       const createAppointment = async () => {
         try {
             // for (let elemento in appointmentData) {
@@ -71,9 +70,10 @@ export const NewAppointment = () => {
           } catch (error) {
             setMsgError(error.message);
           }
-      }});
+      };
     
       return (
+        <>
         <div className="createAppointmentDesign">
           
           <CInput
@@ -109,5 +109,6 @@ export const NewAppointment = () => {
           />
           <div className="error">{msgError}</div>
         </div>
+        </>
       );
 }
