@@ -54,10 +54,10 @@ export const Home = () => {
                                         id={"Nª servicio: " + service.id}
                                         title={service.serviceName}
                                         description={service.description}
-                                        clickFunction={() => {
-                                            // !tokenData ? navigate("/login") :
-                                             navigate("/createAppointment")
-                                        }}
+                                        clickFunction={() =>
+                                            !tokenData ? navigate("/login") 
+                                            : navigate("/createAppointment")
+                                        }
                                     />
                                 </>
                             )

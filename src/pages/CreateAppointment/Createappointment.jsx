@@ -1,14 +1,13 @@
 
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import { CreateAppointment } from "../../services/api.calls"
 import { CInput } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
+import "./CreateAppointment.css"
 
 
 export const NewAppointment = () => {
 
-    const navigate = useNavigate()
     const tokenData = JSON.parse(localStorage.getItem("passport"))
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
@@ -16,7 +15,7 @@ export const NewAppointment = () => {
     const [appointmentData, setAppointmentData] = useState({
         date: "",
         serviceId: "",
-        userId: ""
+        userId: tokenData?.userId
 
     })
 
@@ -27,12 +26,6 @@ export const NewAppointment = () => {
     //   });
     
       const [msgError, setMsgError] = useState("");
-
-      useEffect(() => {
-        if (tokenStorage) {
-            navigate("/login")
-        }
-      }, [tokenStorage])
     
     
       const inputHandler = (e) => {
@@ -42,14 +35,14 @@ export const NewAppointment = () => {
         }));
       };
     
-    //   const checkError = (e) => {
-    //     const error = validame(e.target.name, e.target.value);
+      // const checkError = (e) => {
+      //   const error = validame(e.target.name, e.target.value);
     
-    //     setAccessDataError((prevState) => ({
-    //       ...prevState,
-    //       [e.target.name + "Error"]: error,
-    //     }));
-    //   };
+        // setAppointmentData((prevState) => ({
+        //   ...prevState,
+        //   [e.target.name + "Error"]: error,
+        // }));
+      
 
       const createAppointment = async () => {
         try {
@@ -62,15 +55,16 @@ export const NewAppointment = () => {
             const fetched = await CreateAppointment(appointmentData);
     
             setMsgError(fetched.message)
-    
-            setTimeout(()=>{
-              navigate("/")
-            },1000)
+
+            
+            // setTimeout(()=>{
+            //   navigate("/")
+            // },1000)
     
           } catch (error) {
             setMsgError(error.message);
           }
-      };
+        }
     
       return (
         <>
@@ -94,11 +88,11 @@ export const NewAppointment = () => {
           />
            <CInput
             className={`inputDesign`}
-            type={"text"}
-            placeholder={"user Id"}
+            type={"number"}
+            placeholder={tokenData?.userId}
             name={"userId"}
             disabled={"disabled"}
-            value={tokenData.userId}
+            value={tokenData?.userId}
             onChangeFunction={(e) => inputHandler(e)}
           />
     
@@ -107,7 +101,7 @@ export const NewAppointment = () => {
             title={"Create Appointment"}
             functionEmit={createAppointment()}
           />
-          <div className="error">{msgError}</div>
+          
         </div>
         </>
       );
