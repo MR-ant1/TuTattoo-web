@@ -2,13 +2,14 @@
 import "./Card.css"
 
 // eslint-disable-next-line react/prop-types
-export const Card = ({className, type, name}) => {
+export const Card = ({key, id, title, description, clickFunction}) => {
 
     return(
-        <div
-            className={className}
-            type={type}
-            name={name}
-        />
+        <div className="cardDesign" onClick={clickFunction}>
+            <div>{key}</div>
+            <div>{id}</div>
+            <div className="titleDesign">{title}</div>
+            <div>{description}</div>
+        </div>
     )
 }

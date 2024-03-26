@@ -2,19 +2,20 @@
 import { useEffect, useState } from "react"
 import { GetServices } from "../../services/api.calls"
 import { Card } from "../../common/Card/Card"
+import { useNavigate } from "react-router-dom"
 import "./Home.css"
 
 export const Home = () => {
 
-    //const navigate
-
+    const navigate = useNavigate()
+    const tokenData = JSON.parse(localStorage.getItem("passport"))
     // eslint-disable-next-line no-unused-vars
-    const [dbData, setDbData] = useState(false)
-    
-    const [services, setServices] = useState({
-        serviceName:"",
-        description: ""
-    })
+    const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
+
+
+    // const [dbData, setDbData] = useState(false)
+
+    const [services, setServices] = useState([])
 
     // const serviceError?
 
@@ -23,73 +24,52 @@ export const Home = () => {
     // useEffect para click en card ID?
 
     useEffect(() => {
-        // eslint-disable-next-line no-unused-vars
-        const servicesShowcase = async () => {
-        try {
-            const fetched = await GetServices()
+        if (services.length === 0) {
+            const servicesShowcase = async () => {
+                try {
+                    const fetched = await GetServices()
 
-            setDbData(true)
+                    setServices(fetched.data)
 
-            setServices({
-                serviceName: fetched.data.serviceName,
-                description: fetched.data.description
-            })
-            
-        } catch (error) {
-            console.log(error)
+
+                    console.log(fetched.data)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            servicesShowcase()
         }
-    }}, [services])
+    }, [services])
 
-return (
-    <div className="HomeDesign">
-        {setDbData===false ? (
-            <div>LOADING</div>
-        ) : 
-        (
-            <div>
-                <div className="upServices">
-                <Card
-                className={"cardDesign"}
-                type={"text"}
-                name={"Service"}
-                valuename={services.serviceName}
-                valuedescription={services.description}
-                />
-                <Card
-                className={"cardDesign"}
-                type={"text"}
-                name={"Service"}
-                valueName={services.serviceName}
-                valueDescription={services.description}
-                />
-                </div>
-                <div className="downServices">
-                <Card
-                className={"cardDesign"}
-                type={"text"}
-                name={"Service"}
-                valueName={services.serviceName}
-                valueDescription={services.description}
-                />
-                <Card
-                className={"cardDesign"}
-                type={"text"}
-                name={"Service"}
-                valueName={services.serviceName}
-                valueDescription={services.description}
-                />
-                <Card
-                className={"cardDesign"}
-                type={"text"}
-                name={"Service"}
-                valueName={services.serviceName}
-                valueDescription={services.description}
-                />
-                </div>
-            </div>
-            
-        )}
-    </div>
-)
 
+
+    return (
+            <>
+                    {services.length > 0 ? (
+                    <div className="servicesCardsDesign">
+                        {services.slice(0,5).map(
+                            service => {
+                            return (
+                                <>
+                                <Card
+                                    key={service.id}
+                                    id={"Nª servicio: " + service.id}
+                                    title={service.serviceName}
+                                    description={service.description}
+                                    clickFunction={() => 
+                                        {if (tokenData) {
+                                        navigate("/appointments")
+                                    } else navigate("/login")
+                                }}
+                                />
+                               </>
+                            )
+                            })}
+                    </div>
+                    ) : (
+                        <div>LOADING</div>
+                    )}
+                 
+        </>
+    )
 }
