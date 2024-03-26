@@ -3,14 +3,13 @@ import { useState } from "react"
 import { CreateAppointment } from "../../services/api.calls"
 import { CInput } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
+import { validame } from "../../utils/functions"
 import "./CreateAppointment.css"
 
 
 export const NewAppointment = () => {
 
     const tokenData = JSON.parse(localStorage.getItem("passport"))
-    // eslint-disable-next-line no-unused-vars
-    const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
     const [appointmentData, setAppointmentData] = useState({
         date: "",
@@ -19,12 +18,12 @@ export const NewAppointment = () => {
 
     })
 
-    // const [appointmentDataError, setAppointmentDataError] = useState({
-    //     dateError: "",
-    //     serviceIdError: "",
-    //     userIdError: ""
-    //   });
+    const [appointmentDataError, setAppointmentDataError] = useState({
+        dateError: "",
+        serviceIdError: ""
+      });
     
+      // eslint-disable-next-line no-unused-vars
       const [msgError, setMsgError] = useState("");
     
     
@@ -35,16 +34,15 @@ export const NewAppointment = () => {
         }));
       };
     
-      // const checkError = (e) => {
-      //   const error = validame(e.target.name, e.target.value);
+      const checkError = (e) => {
+        const error = validame(e.target.name, e.target.value);
     
-        // setAppointmentData((prevState) => ({
-        //   ...prevState,
-        //   [e.target.name + "Error"]: error,
-        // }));
+        setAppointmentDataError((prevState) => ({
+          ...prevState,
+          [e.target.name + "Error"]: error,
+        }))};
       
-
-      const createAppointment = async () => {
+      const newAppointment = async () => {
         try {
             // for (let elemento in appointmentData) {
             //   if (appointmentData[elemento] === "") {
@@ -67,42 +65,45 @@ export const NewAppointment = () => {
         }
     
       return (
-        <>
+        
         <div className="createAppointmentDesign">
           
           <CInput
-            className={`inputDesign`}
+            className={`inputDesign ${appointmentDataError.dateError !== "" ? "inputDesignError" : ""
+            }`}
             type={"date"}
             placeholder={"date"}
             name={"date"}
             value={appointmentData.date || ""}
             onChangeFunction={(e) => inputHandler(e)}
           />
+          <div className="error">{appointmentDataError.dateError}</div>
           <CInput
-            className={`inputDesign`}
+            className={`inputDesign ${appointmentDataError.serviceIdError !== "" ? "inputDesignError" : ""
+            }`}
             type={"text"}
-            placeholder={"service Id"}
+            placeholder={"service Id (1-5)"}
             name={"serviceId"}
             value={appointmentData.serviceId || ""}
             onChangeFunction={(e) => inputHandler(e)}
+            onBlurFunction={(e) => checkError(e)}
           />
-           <CInput
+            <div className="error">{appointmentDataError.serviceIdError}</div>
+           {/* <CInput
             className={`inputDesign`}
-            type={"number"}
-            placeholder={tokenData?.userId}
+            type={"text"}
+            placeholder={`${tokenData?.userId}`}
             name={"userId"}
             disabled={"disabled"}
             value={tokenData?.userId}
             onChangeFunction={(e) => inputHandler(e)}
-          />
-    
+          /> */}
           <CButton
             className={"cButtonDesign"}
-            title={"Create Appointment"}
-            functionEmit={createAppointment()}
+            title={"Create appointment"}
+            functionEmit={newAppointment}
           />
-          
+            {/* <div className="error">{msgError}</div> */}
         </div>
-        </>
       );
 }

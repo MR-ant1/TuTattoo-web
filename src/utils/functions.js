@@ -35,6 +35,14 @@ export const validame = (type, value) => {
           }
     
           return "";
+
+          case "serviceId":
+
+            if (value > 5 || value < 1) {
+              return "El id de servicio tiene que ser un numero entre 1 y 5"
+            }
+            return ""
+            
         default:
           console.log("No matches found")
       }
