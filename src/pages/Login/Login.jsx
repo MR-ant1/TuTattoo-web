@@ -36,6 +36,7 @@ export const Login = () => {
         }
       }, [tokenStorage])
     
+    
       const inputHandler = (e) => {
         setAccessData((prevState) => ({
           ...prevState,
@@ -84,6 +85,9 @@ export const Login = () => {
     
       return (
         <div className="loginDesign">
+          <div className="loginInfo">
+            Inicie sesión para disfrutar de nuestros servicios
+          </div>
           <CInput
             className={`inputDesign ${
               accessDataError.emailError !== "" ? "inputDesignError" : ""

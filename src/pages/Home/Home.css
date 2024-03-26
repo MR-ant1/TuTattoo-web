@@ -1,12 +1,9 @@
 
-.HomeDesign {
-    height: 88vh;
+.servicesCardsDesign {
+    margin:0em;
+    padding: 0em;
     width: 100vw;
-
-    background-color: rgb(210, 210, 208);
-
+    height: 88vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    flex-wrap: wrap;
+  }
