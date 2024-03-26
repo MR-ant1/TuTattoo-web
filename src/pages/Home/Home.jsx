@@ -57,10 +57,10 @@ export const Home = () => {
                                     title={service.serviceName}
                                     description={service.description}
                                     clickFunction={() => 
-                                        {if (tokenData) {
-                                        navigate("/appointments")
-                                    } else navigate("/login")
-                                }}
+                                        {if (!tokenData) {
+                                       navigate("/login")
+                                    } else navigate("/createAppointment")
+                                }} 
                                 />
                                </>
                             )

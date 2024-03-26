@@ -129,3 +129,28 @@ export const GetServices = async () => {
         return error
     }
 }
+
+export const CreateAppointment = async (data, token) => {
+    const clientData = {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    }
+    try {
+        const response = await fetch(`${root}appointments`, clientData)
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}
