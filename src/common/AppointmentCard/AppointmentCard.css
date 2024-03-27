@@ -12,17 +12,4 @@
     align-items: center;
     justify-content: center;
     transition: 0.2s;
-
-
-}
-
-.cardDesign:hover {
-    cursor: pointer;
-    background-color: rgb(172, 172, 172);
-    transition: 0.2s;
-}
-
-.titleDesign {
-    margin: 1em;
-    font-weight: bold;
 }
