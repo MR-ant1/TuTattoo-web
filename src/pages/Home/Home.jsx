@@ -53,7 +53,7 @@ export const Home = () => {
                                         id={"Nª servicio: " + service.id}
                                         title={service.serviceName}
                                         description={service.description}
-                                        clickFunction={() => !tokenData 
+                                        clickFunction={() => !tokenData?.token 
                                             ? navigate("/login") 
                                             : navigate("/createAppointment")
                                         }

@@ -7,10 +7,10 @@ export const Header = () => {
 
     const tokenData = JSON.parse(localStorage.getItem("passport"));
     const navigate = useNavigate()
-    console.log(tokenData)
+
     const logOut = () => {
         localStorage.removeItem("passport")
-        navigate("login")
+        navigate("/")
     }
     //Adding register navigation to allow move from header. Included a token validation to show register and login or icon to profile and log out (future)
     return (
@@ -20,16 +20,19 @@ export const Header = () => {
             {tokenData?.token ? (
                 <div className="authMenu">
                     <Navigator
+                        title={"My Appointments"} sendTo={"/userAppointments"}
+                    />
+                    <Navigator
                         title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
                     />
                     <div onClick={logOut}>
-                        <Navigator title={"log out"} sendTo={"/"} />
+                        <Navigator title={"Cerrar sesión"} sendTo={"/"} />
                     </div>
                 </div>
             ) : (
                 <div className="authMenu">
-                    <Navigator title={"register"} sendTo={"/register"} />
-                    <Navigator title={"login"} sendTo={"/login"} />
+                    <Navigator title={"Registro"} sendTo={"/register"} />
+                    <Navigator title={"Login"} sendTo={"/login"} />
                 </div>
             )
             }
