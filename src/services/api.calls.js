@@ -2,7 +2,7 @@
 const root = "http://localhost:4001/api/"
 
 export const RegisterUser = async (user) => {
-    
+
     const clientData = {
         method: "POST",
         headers: {
@@ -21,12 +21,12 @@ export const RegisterUser = async (user) => {
         }
 
         return data
-    
+
     } catch (error) {
         return error;
     }
-    
-    
+
+
 }
 
 export const LoginUser = async (accessData) => {
@@ -34,7 +34,7 @@ export const LoginUser = async (accessData) => {
     const clientData = {
         method: "POST",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(accessData)
     }
@@ -59,7 +59,7 @@ export const GetProfile = async (token) => {
     const clientData = {
         method: "GET",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         }
     }
@@ -84,7 +84,7 @@ export const UpdateProfile = async (token, updateData) => {
     const clientData = {
         method: "PUT",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(updateData)
@@ -110,7 +110,7 @@ export const GetServices = async () => {
     const clientData = {
         method: "GET",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         }
     }
 
@@ -130,15 +130,16 @@ export const GetServices = async () => {
     }
 }
 
-export const CreateAppointment = async (appointmentData, token) => {
+export const CreateAppointment = async (token, appointmentData) => {
+
     const clientData = {
         method: "POST",
         headers: {
-            "Content-Type":"application/json",
-            "Authorization": `Bearer ${token}`
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(appointmentData)
-    } 
+    };
 
     try {
         const response = await fetch(`${root}appointments`, clientData)

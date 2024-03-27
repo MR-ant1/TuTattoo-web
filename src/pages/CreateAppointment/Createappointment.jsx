@@ -5,14 +5,19 @@ import { CInput } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
 import { validame } from "../../utils/functions"
 import "./CreateAppointment.css"
+import { useNavigate } from "react-router-dom"
 
 
 export const NewAppointment = () => {
 
+    const navigate = useNavigate()
     const tokenData = JSON.parse(localStorage.getItem("passport"))
 
+    // eslint-disable-next-line no-unused-vars
+    const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
+    
     const [appointmentData, setAppointmentData] = useState({
-        date: "",
+        appointmentDate: "",
         serviceId: "",
         userId: tokenData?.decodificado?.userId
     })
@@ -49,14 +54,15 @@ export const NewAppointment = () => {
             //   }
             // }
     
-            const fetched = await CreateAppointment(appointmentData);
+            const fetched = await CreateAppointment(tokenStorage, appointmentData);
     
             setMsgError(fetched.message)
 
-            
-            // setTimeout(()=>{
-            //   navigate("/")
-            // },1000)
+            fetched.success === true ?
+            setTimeout(()=>{
+              navigate("/")
+            },2000)
+            : navigate("/createAppointment")
     
           } catch (error) {
             setMsgError(error.message);
@@ -68,15 +74,13 @@ export const NewAppointment = () => {
         <div className="createAppointmentDesign">
           
           <CInput
-            className={`inputDesign ${appointmentDataError.dateError !== "" ? "inputDesignError" : ""
-            }`}
+            className={"inputDesign"}
             type={"date"}
             placeholder={"date"}
-            name={"date"}
-            value={appointmentData.date || ""}
+            name={"appointmentDate"}
+            value={appointmentData.appointmentDate || ""}
             onChangeFunction={(e) => inputHandler(e)}
           />
-          <div className="error">{appointmentDataError.dateError}</div>
           <CInput
             className={`inputDesign ${appointmentDataError.serviceIdError !== "" ? "inputDesignError" : ""
             }`}
@@ -102,7 +106,7 @@ export const NewAppointment = () => {
             title={"Create appointment"}
             functionEmit={newAppointment}
           />
-            {/* <div className="error">{msgError}</div> */}
+            <div className="error">{msgError}</div>
         </div>
       );
 }
