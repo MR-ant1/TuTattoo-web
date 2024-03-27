@@ -15,6 +15,7 @@ export const NewAppointment = () => {
 
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
+    // {const appointmentDate = date + "T" + time }
     
     const [appointmentData, setAppointmentData] = useState({
         appointmentDate: "",
@@ -22,8 +23,9 @@ export const NewAppointment = () => {
         userId: tokenData?.decodificado?.userId
     })
     
+    
     const [appointmentDataError, setAppointmentDataError] = useState({
-        dateError: "",
+        appointmentDateError: "",
         serviceIdError: ""
       });
     
@@ -75,8 +77,8 @@ export const NewAppointment = () => {
           
           <CInput
             className={"inputDesign"}
-            type={"date"}
-            placeholder={"date"}
+            type={"timedate"}
+            placeholder={"date&time (MM-DD-AAAA HH-NM-SS)"}
             name={"appointmentDate"}
             value={appointmentData.appointmentDate || ""}
             onChangeFunction={(e) => inputHandler(e)}
