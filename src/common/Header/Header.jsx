@@ -5,7 +5,7 @@ import "./Header.css"
 
 export const Header = () => {
 
-    const passport = JSON.parse(localStorage.getItem("passport"));
+    const tokenData = JSON.parse(localStorage.getItem("passport"));
     const navigate = useNavigate()
 
     const logOut = () => {
@@ -17,10 +17,10 @@ export const Header = () => {
         <div className="headerDesign">
             <Navigator title={"Home/Showcase"} sendTo={"/"} />
 
-            {passport?.token ? (
+            {tokenData?.token ? (
                 <div className="authMenu">
                     <Navigator
-                        title={"Mi Cuenta"} sendTo={"/profile"}
+                        title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
                     />
                     <div onClick={logOut}>
                         <Navigator title={"log out"} sendTo={"/"} />
