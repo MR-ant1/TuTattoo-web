@@ -72,7 +72,7 @@ export const Login = () => {
     
             localStorage.setItem("passport", JSON.stringify(passport))
     
-            setMsgError(`Hola de nuevo, nos alegra verte por tuTattoo!`)
+            setMsgError(`Hola de nuevo, ${tokenData?.decodificado?.firstName} nos alegra verte por tuTattoo!`)
     
             setTimeout(()=>{
               navigate("/")

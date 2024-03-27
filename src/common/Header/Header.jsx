@@ -20,7 +20,7 @@ export const Header = () => {
             {tokenData?.token ? (
                 <div className="authMenu">
                     <Navigator
-                        title={`${tokenData.decodificado.firstName}`} sendTo={"/profile"}
+                        title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
                     />
                     <div onClick={logOut}>
                         <Navigator title={"log out"} sendTo={"/"} />
