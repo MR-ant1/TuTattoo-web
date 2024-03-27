@@ -14,10 +14,9 @@ export const NewAppointment = () => {
     const [appointmentData, setAppointmentData] = useState({
         date: "",
         serviceId: "",
-        userId: tokenData?.userId
-
+        userId: tokenData?.decodificado?.userId
     })
-
+    
     const [appointmentDataError, setAppointmentDataError] = useState({
         dateError: "",
         serviceIdError: ""
@@ -92,7 +91,7 @@ export const NewAppointment = () => {
            {/* <CInput
             className={`inputDesign`}
             type={"text"}
-            placeholder={`${tokenData?.userId}`}
+            placeholder={`${tokenData?.decodificado.userId}`}
             name={"userId"}
             disabled={"disabled"}
             value={tokenData?.userId}

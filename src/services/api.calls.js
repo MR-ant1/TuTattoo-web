@@ -138,9 +138,8 @@ export const CreateAppointment = async (appointmentData, token) => {
             "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(appointmentData)
-        
     } 
-    console.log(appointmentData)
+
     try {
         const response = await fetch(`${root}appointments`, clientData)
 
