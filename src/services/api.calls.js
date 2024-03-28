@@ -68,7 +68,7 @@ export const GetProfile = async (token) => {
         const response = await fetch(`${root}users/profile`, clientData)
 
         const data = await response.json();
-
+        
         if (!data.success) {
             throw new Error(data.message)
         }
@@ -165,20 +165,20 @@ export const GetMyAppointments = async (token) => {
             "Authorization": `Bearer ${token}`
         }
     }
-    
+   
     try {
         const response = await fetch(`${root}appointments`, clientData)
         
 
         const data = await response.json();
-        console.log(data)
+        
 
         if (!data.success) {
             throw new Error(data.message)
         }
 
-        return data
-
+        return data 
+        
     } catch (error) {
         return error
     }

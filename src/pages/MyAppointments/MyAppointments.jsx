@@ -9,25 +9,27 @@ import "./MyAppointments.css"
 const tokenData = JSON.parse(localStorage.getItem("passport"))
 
 export const MyAppointments = () => {
-
+    const [dbData, setdbData] = useState(false)
     const navigate = useNavigate()
-
+    
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
     const [appointments, setAppointments] = useState([])
 
-    if (!tokenStorage) {
-        navigate("/")
-    }
+    useEffect(() => {
+        if (!tokenStorage) {
+            navigate("/")
+        }
+    }, [tokenStorage])
 
     useEffect(() => {
-        if (appointments?.length === 0) {
+        if (appointments.length === 0) {
             const getUserAppointments = async () => {
                 try {
-                    const fetched = await GetMyAppointments()
+                    const fetched = await GetMyAppointments(tokenStorage)
                     setAppointments(fetched.data)
-
+                    setdbData(true)
                 } catch (error) {
                     console.log(error)
                 }
@@ -35,27 +37,29 @@ export const MyAppointments = () => {
             getUserAppointments()
         }
     }, [appointments])
+    console.log(appointments)
 
     return (
-    <>
-        <div className="myAppointmentsDesign">
-            {appointments?.length > 0 ? (
-                <div className="appointmentCardDesign">
-                {appointments.slice(0, 68).map(
-                    appointment => {
-                    <>
-                        <AppointmentCard
-                            appointmentDate={appointment.appointmentDate}
-                            service={appointment.service}
-                        />
-                    </>
-                })}
+        <>
+            <div className="myAppointmentsDesign">
+                {dbData !== true ? (
+                    <div>LOADING</div>
+                ) : (
+                    <div className="appointmentCardDesign">
+                        {appointments.slice(0, appointments.length).map(
+                            appointment => {
+                                return(
+                                <>
+                                    <AppointmentCard
+                                        appointmentDate={appointment.appointmentDate}
+                                        service={appointment.service.serviceName}
+                                        userId={appointment.user.id}
+                                    />
+                                </>
+                            )})}
+                    </div>
+                )}
             </div>
-                
-            ) : (
-                <div>LOADING</div>  
-            )}
-        </div>
-    </>
+        </>
     )
 }
