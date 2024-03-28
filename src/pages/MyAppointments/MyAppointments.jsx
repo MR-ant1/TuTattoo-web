@@ -6,12 +6,12 @@ import { GetMyAppointments } from "../../services/api.calls"
 import "./MyAppointments.css"
 
 
- const tokenData = JSON.parse(localStorage.getItem("passport"))
+const tokenData = JSON.parse(localStorage.getItem("passport"))
 
 export const MyAppointments = () => {
 
     const navigate = useNavigate()
-   
+
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
@@ -22,11 +22,10 @@ export const MyAppointments = () => {
     }
 
     useEffect(() => {
-        if (appointments.length === 0) {
+        if (appointments?.length === 0) {
             const getUserAppointments = async () => {
                 try {
                     const fetched = await GetMyAppointments()
-
                     setAppointments(fetched.data)
 
                 } catch (error) {
@@ -38,25 +37,25 @@ export const MyAppointments = () => {
     }, [appointments])
 
     return (
-        <>
+    <>
+        <div className="myAppointmentsDesign">
             {appointments?.length > 0 ? (
-                <div className="cardDesign">
-                    {appointments.slice(0, (appointments.length + 1)).map(
-                        appointment => {
-                                <>
-                                    <AppointmentCard
-                                        appointmentDate={appointment.appointmentDate}
-                                        serviceId={appointment.serviceId}
-                                        userId={tokenData?.decodificado.userId}
-                                    />
-                                </>
-                            
-                        })}
-                </div>
+                <div className="appointmentCardDesign">
+                {appointments.slice(0, 68).map(
+                    appointment => {
+                    <>
+                        <AppointmentCard
+                            appointmentDate={appointment.appointmentDate}
+                            service={appointment.service}
+                        />
+                    </>
+                })}
+            </div>
+                
             ) : (
-                <div>LOADING</div>
+                <div>LOADING</div>  
             )}
-
-        </>
+        </div>
+    </>
     )
 }

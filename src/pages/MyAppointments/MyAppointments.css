@@ -1,0 +1,20 @@
+.myAppointmentsDesign {
+    height: 88vh;
+    width: 100vw;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.appointmentCardDesign {
+    height: 4em;
+    width: 30em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: grey;
+}
