@@ -184,7 +184,7 @@ export const GetMyAppointments = async (token) => {
     }
 }
 
-export const deleteAppointmentById = async (token, id) => {
+export const DeleteAppointmentById = async (token, id) => {
     const clientData = {
         method: "DELETE",
         headers: {
@@ -211,3 +211,5 @@ export const deleteAppointmentById = async (token, id) => {
         return error
     }
 }
+
+const getUsers

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppointmentCard } from "../../common/AppointmentCard/AppointmentCard"
-import { GetMyAppointments, deleteAppointmentById } from "../../services/api.calls"
+import { DeleteAppointmentById, GetMyAppointments } from "../../services/api.calls"
 import { CButton } from "../../common/CButton/CButton"
 import "./MyAppointments.css"
 
@@ -43,7 +43,7 @@ export const MyAppointments = () => {
     const deleteMyappointment = async (id) => {
         try {
             // eslint-disable-next-line no-unused-vars
-            const fetched = await deleteAppointmentById(tokenStorage, id)
+            const fetched = await DeleteAppointmentById(tokenStorage, id)
             // setAppointments(
             //     appointments.indexOf(fetched.data),
             //     appointments.splice(fetched.data, 1)
