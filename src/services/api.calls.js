@@ -183,3 +183,31 @@ export const GetMyAppointments = async (token) => {
         return error
     }
 }
+
+export const deleteAppointmentById = async (token, id) => {
+    const clientData = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(id),
+    }
+   
+    try {
+        const response = await fetch(`${root}appointments`, clientData)
+        
+
+        const data = await response.json();
+        
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data 
+        
+    } catch (error) {
+        return error
+    }
+}

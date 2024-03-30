@@ -1,13 +1,12 @@
 import "./AppointmentCard.css"
 
 // eslint-disable-next-line react/prop-types
-export const AppointmentCard = ({appointmentDate, service, userId}) => {
+export const AppointmentCard = ({ key, appointmentDate, service }) => {
 
-    return(
-        <div className="cardDesign">
+    return (
+        <div className="appointmentCardDesign" key={key}>
             <div>{appointmentDate}</div>
             <div>{service}</div>
-            <div>{userId}</div>
         </div>
     )
 }

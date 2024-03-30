@@ -2,16 +2,18 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppointmentCard } from "../../common/AppointmentCard/AppointmentCard"
-import { GetMyAppointments } from "../../services/api.calls"
+import { GetMyAppointments, deleteAppointmentById } from "../../services/api.calls"
+import { CButton } from "../../common/CButton/CButton"
 import "./MyAppointments.css"
 
 
-const tokenData = JSON.parse(localStorage.getItem("passport"))
-
 export const MyAppointments = () => {
+    
     const [dbData, setdbData] = useState(false)
     const navigate = useNavigate()
-    
+    const tokenData = JSON.parse(localStorage.getItem("passport"))
+
+
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
@@ -24,7 +26,7 @@ export const MyAppointments = () => {
     }, [tokenStorage])
 
     useEffect(() => {
-        if (appointments.length === 0) {
+        if (dbData === false) {
             const getUserAppointments = async () => {
                 try {
                     const fetched = await GetMyAppointments(tokenStorage)
@@ -37,7 +39,19 @@ export const MyAppointments = () => {
             getUserAppointments()
         }
     }, [appointments])
-    console.log(appointments)
+
+    const deleteMyappointment = async (id) => {
+        try {
+            // eslint-disable-next-line no-unused-vars
+            const fetched = await deleteAppointmentById(tokenStorage, id)
+            // setAppointments(
+            //     appointments.indexOf(fetched.data),
+            //     appointments.splice(fetched.data, 1)
+            // )
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -45,20 +59,30 @@ export const MyAppointments = () => {
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                    <div className="appointmentCardDesign">
-                        {appointments.slice(0, appointments.length).map(
+                        <div>
+                        {appointments.map(
                             appointment => {
-                                return(
-                                <>
-                                    <AppointmentCard
-                                        appointmentDate={appointment.appointmentDate}
-                                        service={appointment.service.serviceName}
-                                        userId={appointment.user.id}
-                                    />
-                                </>
-                            )})}
+                                return (
+                                    <>
+                                     <div className="appointmentsDeleteListDesign" key={appointment.appointmentId}>
+                                        <AppointmentCard
+                                            appointmentDate={appointment.appointmentDate}
+                                            service={appointment.service.serviceName}   
+                                        />
+                                        <div className="deleteAppointmentDesign">
+                                            <CButton 
+                                            className={"cButtonDesign"}
+                                            title={"Delete Appointment"}
+                                            functionEmit={() => deleteMyappointment(appointment.id)}
+                                            />
+                                        </div>
+                                        </div>
+                                    </>
+                                )
+                            })}
                     </div>
-                )}
+                )
+                }
             </div>
         </>
     )
