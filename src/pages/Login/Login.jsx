@@ -4,20 +4,23 @@ import { useNavigate } from "react-router-dom"
 import { validame } from "../../utils/functions";
 import { useState, useEffect } from "react";
 import { CInput } from "../../common/CInput/CInput";
-import { CButton } from "../../common/CButton/CButton";import { decodeToken } from "react-jwt";
+import { CButton } from "../../common/CButton/CButton";
+import { decodeToken } from "react-jwt";
 import { LoginUser } from "../../services/api.calls";
 import "./Login.css"
 
 
-const tokenData = JSON.parse(localStorage.getItem("passport"))
+
 
 export const Login = () => {
 
     const navigate = useNavigate()
 
+    const tokenData = JSON.parse(localStorage.getItem("passport"))
+
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
-
+   
     const [accessData, setAccessData] = useState({
         email: "",
         password: "",
@@ -65,15 +68,15 @@ export const Login = () => {
     
             const decodificado = decodeToken(fetched.token)
     
-            const passport = {
+            const tokenData = {
                 token: fetched.token,
                 decodificado: decodificado,
             }
     
-            localStorage.setItem("passport", JSON.stringify(passport))
+            localStorage.setItem("passport", JSON.stringify(tokenData))
     
-            setMsgError(`Hola de nuevo, nos alegra verte por tuTattoo!`)
-    
+            setMsgError(`Hola de nuevo, ${tokenData?.decodificado?.firstName} nos alegra verte por tuTattoo!`)
+            //variable `${tokenData?.decodificado?.firstName}` no funciona cuando si que lo hace en otras vistas escrita igual. devuelve  undefined o rompe otras funciones que sin el van perfectamente.
             setTimeout(()=>{
               navigate("/")
             },1000)

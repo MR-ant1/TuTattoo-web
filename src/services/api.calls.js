@@ -2,7 +2,7 @@
 const root = "http://localhost:4001/api/"
 
 export const RegisterUser = async (user) => {
-    
+
     const clientData = {
         method: "POST",
         headers: {
@@ -21,12 +21,12 @@ export const RegisterUser = async (user) => {
         }
 
         return data
-    
+
     } catch (error) {
         return error;
     }
-    
-    
+
+
 }
 
 export const LoginUser = async (accessData) => {
@@ -34,7 +34,7 @@ export const LoginUser = async (accessData) => {
     const clientData = {
         method: "POST",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(accessData)
     }
@@ -59,7 +59,7 @@ export const GetProfile = async (token) => {
     const clientData = {
         method: "GET",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         }
     }
@@ -68,7 +68,7 @@ export const GetProfile = async (token) => {
         const response = await fetch(`${root}users/profile`, clientData)
 
         const data = await response.json();
-
+        
         if (!data.success) {
             throw new Error(data.message)
         }
@@ -80,14 +80,14 @@ export const GetProfile = async (token) => {
     }
 }
 
-export const UpdateProfile = async (token, data) => {
+export const UpdateProfile = async (token, updateData) => {
     const clientData = {
         method: "PUT",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(updateData)
     }
 
     try {
@@ -110,7 +110,7 @@ export const GetServices = async () => {
     const clientData = {
         method: "GET",
         headers: {
-            "Content-Type":"application/json",
+            "Content-Type": "application/json",
         }
     }
 
@@ -125,6 +125,88 @@ export const GetServices = async () => {
 
         return data
 
+    } catch (error) {
+        return error
+    }
+}
+
+export const CreateAppointment = async (token, appointmentData) => {
+
+    const clientData = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(appointmentData)
+    };
+
+    try {
+        const response = await fetch(`${root}appointments`, clientData)
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}
+
+export const GetMyAppointments = async (token) => {
+    const clientData = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    }
+   
+    try {
+        const response = await fetch(`${root}appointments`, clientData)
+        
+
+        const data = await response.json();
+        
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data 
+        
+    } catch (error) {
+        return error
+    }
+}
+
+export const deleteAppointmentById = async (token, id) => {
+    const clientData = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(id),
+    }
+   
+    try {
+        const response = await fetch(`${root}appointments`, clientData)
+        
+
+        const data = await response.json();
+        
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data 
+        
     } catch (error) {
         return error
     }

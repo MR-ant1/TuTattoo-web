@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { GetServices } from "../../services/api.calls"
-import { Card } from "../../common/Card/Card"
+import { Card } from "../../common/ServiceCard/ServiceCard"
 import { useNavigate } from "react-router-dom"
 import "./Home.css"
 
@@ -31,8 +31,6 @@ export const Home = () => {
 
                     setServices(fetched.data)
 
-
-                    console.log(fetched.data)
                 } catch (error) {
                     console.log(error)
                 }
@@ -44,32 +42,30 @@ export const Home = () => {
 
 
     return (
-            <>
-                    {services.length > 0 ? (
-                    <div className="servicesCardsDesign">
-                        {services.slice(0,5).map(
-                            service => {
+        <>
+            {services.length > 0 ? (
+                <div className="servicesCardsDesign">
+                    {services.slice(0, 5).map(
+                        service => {
                             return (
                                 <>
-                                <Card
-                                    key={service.id}
-                                    id={"Nª servicio: " + service.id}
-                                    title={service.serviceName}
-                                    description={service.description}
-                                    clickFunction={() => 
-                                        {if (tokenData) {
-                                        navigate("/appointments")
-                                    } else navigate("/login")
-                                }}
-                                />
-                               </>
+                                    <Card
+                                        id={"Nª servicio: " + service.id}
+                                        title={service.serviceName}
+                                        description={service.description}
+                                        clickFunction={() => !tokenData?.token 
+                                            ? navigate("/login") 
+                                            : navigate("/createAppointment")
+                                        }
+                                    />
+                                </>
                             )
-                            })}
-                    </div>
-                    ) : (
-                        <div>LOADING</div>
-                    )}
-                 
+                        })}
+                </div>
+            ) : (
+                <div>LOADING</div>
+            )}
+
         </>
     )
 }
