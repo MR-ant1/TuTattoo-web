@@ -212,4 +212,30 @@ export const DeleteAppointmentById = async (token, id) => {
     }
 }
 
-const getUsers
+export const GetUsers = async (token) => {
+
+    const clientData = {
+            method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+        }
+    
+    try {
+        const response = await fetch(`${root}users`, clientData)
+        
+
+        const data = await response.json();
+        
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+        
+    return data
+
+    } catch (error) {
+        return error
+    }
+}

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserCard } from "../../common/UserCard/UserCard"
 import { CButton } from "../../common/CButton/CButton"
+import { GetUsers } from "../../services/api.calls"
 
-export const Admin = () => {
+export const SuperAdmin = () => {
 
     const navigate = useNavigate()
     const tokenData = JSON.parse(localStorage.getItem("passport"))
@@ -21,9 +22,10 @@ export const Admin = () => {
         if (dbData === false) {
             const getUserList = async () => {
                 try {
-                    const fetched = await getUsers(tokenStorage)
+                    const fetched = await GetUsers(tokenStorage)
                     setUsers(fetched.data)
                     setDbData(true)
+                    
                 } catch (error) {
                     console.log(error)
                 }
