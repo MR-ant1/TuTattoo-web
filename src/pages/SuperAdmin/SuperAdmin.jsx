@@ -14,7 +14,7 @@ export const SuperAdmin = () => {
     const tokenStorage= tokenData?.token
 
     useEffect(() => {
-        if (tokenData.roleName !== ("super_admin")) {
+        if (tokenData.decodificado.roleName !== ("super_admin")) {
         navigate ("/")
     }}, [tokenData])
 
@@ -37,26 +37,25 @@ export const SuperAdmin = () => {
 
     return (
         <>
-            <div className="myAppointmentsDesign">
+            <div className="allUsersDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
                         <div>
-                        {users.map(
+                        {users.slice(0, users.length).map(
                             user => {
                                 return (
                                     <>
-                                     <div className="appointmentsDeleteListDesign" key={user.id}>
+                                     <div className="userListDesign" key={user.id}>
                                         <UserCard
                                             firstName={user.firstName}
                                             lastName={user.lastName}  
                                             email={user.email}
-                                            roleName={user.role.name} 
                                         />
                                         <div className="deleteAppointmentDesign">
                                             <CButton 
                                             className={"cButtonDesign"}
-                                            title={"Delete Appointment"}
+                                            title={"Delete User"}
                                             // functionEmit={() => (appointment.id)}
                                             />
                                         </div>
