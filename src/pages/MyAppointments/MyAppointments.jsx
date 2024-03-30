@@ -43,7 +43,7 @@ export const MyAppointments = () => {
     const deleteMyappointment = async (id) => {
         try {
             // eslint-disable-next-line no-unused-vars
-            const fetched = await DeleteAppointmentById(tokenStorage, id)
+            const fetched = await DeleteAppointmentById(tokenData, id)
             // setAppointments(
             //     appointments.indexOf(fetched.data),
             //     appointments.splice(fetched.data, 1)
@@ -64,7 +64,7 @@ export const MyAppointments = () => {
                             appointment => {
                                 return (
                                     <>
-                                     <div className="appointmentsDeleteListDesign" key={appointment.appointmentId}>
+                                     <div className="appointmentsDeleteListDesign" key={appointment.id}>
                                         <AppointmentCard
                                             appointmentDate={appointment.appointmentDate}
                                             service={appointment.service.serviceName}   

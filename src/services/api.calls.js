@@ -184,18 +184,20 @@ export const GetMyAppointments = async (token) => {
     }
 }
 
-export const DeleteAppointmentById = async (token, id) => {
+export const DeleteAppointmentById = async (tokenData, appointmentId) => {
     const clientData = {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify(id),
+            "Authorization": `Bearer ${tokenData?.token}`
+        }
     }
-   
+
+    console.log(tokenData.token)
+    console.log(appointmentId)
+    
     try {
-        const response = await fetch(`${root}appointments`, clientData)
+        const response = await fetch(`${root}appointments/${appointmentId}`, clientData)
         
 
         const data = await response.json();
@@ -235,6 +237,35 @@ export const GetUsers = async (token) => {
         
     return data
 
+    } catch (error) {
+        return error
+    }
+}
+export const DeleteUserBySuperAdmin = async (tokenData, id) => {
+    const clientData = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${tokenData?.token}`
+        }
+    }
+
+    console.log(tokenData.token)
+    console.log(id)
+    
+    try {
+        const response = await fetch(`${root}users/${id}`, clientData)
+        
+
+        const data = await response.json();
+        
+
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data 
+        
     } catch (error) {
         return error
     }

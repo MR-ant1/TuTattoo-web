@@ -1,13 +1,4 @@
 
-.allUsersDesign {
-    height: 88vh;
-    width: 100vw;
-
-    display: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
 .userCardDesign {
     height: 6em;
     width: 18em;

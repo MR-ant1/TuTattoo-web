@@ -1,0 +1,9 @@
+.allUsersDesign {
+    height: 88vh;
+    width: 100vw;
+    background-color: rgb(125, 125, 125);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

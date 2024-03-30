@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserCard } from "../../common/UserCard/UserCard"
 import { CButton } from "../../common/CButton/CButton"
-import { GetUsers } from "../../services/api.calls"
+import { DeleteUserBySuperAdmin, GetUsers } from "../../services/api.calls"
+import "./SuperAdmin.css"
 
 export const SuperAdmin = () => {
 
@@ -34,6 +35,21 @@ export const SuperAdmin = () => {
         }
     }, [users])
 
+    const deleteUser = async (id) => {
+        try {
+            // eslint-disable-next-line no-unused-vars
+            const fetched = await DeleteUserBySuperAdmin(tokenData, id)
+
+            if (id === tokenData?.decodificado?.userId) {
+                throw new Error("cant delete super admin")
+            }
+                setUsers (
+                users.filter((user) => user.id !== id)
+                )
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -42,6 +58,7 @@ export const SuperAdmin = () => {
                     <div>LOADING</div>
                 ) : (
                         <div>
+
                         {users.slice(0, users.length).map(
                             user => {
                                 return (
@@ -56,7 +73,7 @@ export const SuperAdmin = () => {
                                             <CButton 
                                             className={"cButtonDesign"}
                                             title={"Delete User"}
-                                            // functionEmit={() => (appointment.id)}
+                                            functionEmit={() => deleteUser(user.id)}
                                             />
                                         </div>
                                         </div>
