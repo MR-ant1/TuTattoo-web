@@ -68,7 +68,7 @@ export const GetProfile = async (token) => {
         const response = await fetch(`${root}users/profile`, clientData)
 
         const data = await response.json();
-        
+
         if (!data.success) {
             throw new Error(data.message)
         }
@@ -165,26 +165,26 @@ export const GetMyAppointments = async (token) => {
             "Authorization": `Bearer ${token}`
         }
     }
-   
+
     try {
         const response = await fetch(`${root}appointments`, clientData)
-        
+
 
         const data = await response.json();
-        
+
 
         if (!data.success) {
             throw new Error(data.message)
         }
 
-        return data 
-        
+        return data
+
     } catch (error) {
         return error
     }
 }
 
-export const DeleteAppointmentById = async (tokenData, appointmentId) => {
+export const DeleteAppointmentById = async (tokenData, id) => {
     const clientData = {
         method: "DELETE",
         headers: {
@@ -194,21 +194,21 @@ export const DeleteAppointmentById = async (tokenData, appointmentId) => {
     }
 
     console.log(tokenData.token)
-    console.log(appointmentId)
-    
+    console.log(id)
+
     try {
-        const response = await fetch(`${root}appointments/${appointmentId}`, clientData)
-        
+        const response = await fetch(`${root}appointments/${id}`, clientData)
+
 
         const data = await response.json();
-        
+
 
         if (!data.success) {
             throw new Error(data.message)
         }
 
-        return data 
-        
+        return data
+
     } catch (error) {
         return error
     }
@@ -217,25 +217,25 @@ export const DeleteAppointmentById = async (tokenData, appointmentId) => {
 export const GetUsers = async (token) => {
 
     const clientData = {
-            method: "GET",
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
         },
-        }
-    
+    }
+
     try {
         const response = await fetch(`${root}users`, clientData)
-        
+
 
         const data = await response.json();
-        
+
 
         if (!data.success) {
             throw new Error(data.message)
         }
-        
-    return data
+
+        return data
 
     } catch (error) {
         return error
@@ -250,22 +250,19 @@ export const DeleteUserBySuperAdmin = async (tokenData, id) => {
         }
     }
 
-    console.log(tokenData.token)
-    console.log(id)
-    
     try {
         const response = await fetch(`${root}users/${id}`, clientData)
-        
+
 
         const data = await response.json();
-        
+
 
         if (!data.success) {
             throw new Error(data.message)
         }
 
-        return data 
-        
+        return data
+
     } catch (error) {
         return error
     }

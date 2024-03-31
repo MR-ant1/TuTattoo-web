@@ -44,10 +44,9 @@ export const MyAppointments = () => {
         try {
             // eslint-disable-next-line no-unused-vars
             const fetched = await DeleteAppointmentById(tokenData, id)
-            // setAppointments(
-            //     appointments.indexOf(fetched.data),
-            //     appointments.splice(fetched.data, 1)
-            // )
+            setAppointments (
+                appointments.filter((appointment) => appointment.id !== id)
+                )
         } catch (error) {
             console.log(error)
         }
