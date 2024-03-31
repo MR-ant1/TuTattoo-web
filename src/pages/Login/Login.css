@@ -1,0 +1,22 @@
+
+.loginDesign {
+    height: 88vh;
+    width: 100vw;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    height: 1em;
+    color: red
+}
+
+.loginInfo {
+    height: 4em;
+    display: flex;
+    align-items: flex-start;
+    font-weight: bold;
+}

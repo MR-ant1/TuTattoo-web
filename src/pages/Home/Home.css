@@ -1,0 +1,9 @@
+
+.servicesCardsDesign {
+    margin:0em;
+    padding: 0em;
+    width: 100vw;
+    height: 88vh;
+    display: flex;
+    flex-wrap: wrap;
+  }

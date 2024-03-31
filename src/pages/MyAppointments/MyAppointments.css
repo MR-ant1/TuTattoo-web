@@ -1,0 +1,19 @@
+.myAppointmentsDesign {
+    height: 88vh;
+    width: 100vw;
+    margin: 0em;
+    padding: 0em;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.appointmentsDeleteListDesign {
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}

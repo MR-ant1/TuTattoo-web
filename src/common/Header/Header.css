@@ -1,0 +1,21 @@
+
+.headerDesign {
+
+    height: 12vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    background-color: blue;
+}
+
+.authMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
