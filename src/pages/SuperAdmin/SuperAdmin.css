@@ -3,8 +3,8 @@
     width: 100vw;
     background-image: url('img/BackgroundFront.jpeg');
 
-    display: wrap;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
 }
 
 .userListDesign {

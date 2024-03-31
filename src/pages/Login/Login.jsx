@@ -62,11 +62,11 @@ export const Login = () => {
 
       const fetched = await LoginUser(accessData);
       if (fetched.success === true) {
-      setMsgError(`Hola de nuevo, ${tokenData?.decodificado?.firstName} nos alegra verte por tuTattoo!`)
+      setMsgError(`Hola de nuevo, nos alegra verte por tuTattoo!`)
       setTimeout(() => {
         navigate("/")
       }, 1000)
-      }else throw new Error("Email or password incorrect")
+      }else throw new Error("Email o password incorrectos")
 
 
       const decodificado = decodeToken(fetched.token)
@@ -82,6 +82,7 @@ export const Login = () => {
 
     } catch (error) {
       setMsgError(error.message);
+      {console.log(error)}
     }
   };
 
@@ -119,6 +120,6 @@ export const Login = () => {
         functionEmit={loginMe}
       />
       <div className="error">{msgError}</div>
-    </div>
+    </div> 
   );
 }
