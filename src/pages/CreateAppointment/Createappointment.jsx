@@ -73,7 +73,7 @@ export const NewAppointment = () => {
     
       return (
         
-        <div className="createAppointmentDesign">
+        <div className="backgroundImage">
           
           <CInput
             className={"inputDesign"}

@@ -1,4 +1,10 @@
 
+.backgroundImage {
+  height: 88vh;
+  width: 100vw;
+  background-image: url('img/BackgroundFront.jpeg');
+}
+
 .servicesCardsDesign {
     margin:0em;
     padding: 0em;
@@ -7,3 +13,4 @@
     display: flex;
     flex-wrap: wrap;
   }
+  

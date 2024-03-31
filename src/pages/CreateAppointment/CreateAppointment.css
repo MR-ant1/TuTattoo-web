@@ -1,9 +1,9 @@
-.createAppointmentDesign {
+.backgroundImage {
     height: 88vh;
     width: 100vw;
-    background-color: rgb(199, 190, 255);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('img/BackgroundFront.jpeg');
 }

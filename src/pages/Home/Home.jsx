@@ -44,23 +44,25 @@ export const Home = () => {
     return (
         <>
             {services.length > 0 ? (
-                <div className="servicesCardsDesign">
-                    {services.slice(0, 5).map(
-                        service => {
-                            return (
-                                <>
-                                    <Card
-                                        id={"Nª servicio: " + service.id}
-                                        title={service.serviceName}
-                                        description={service.description}
-                                        clickFunction={() => !tokenData?.token 
-                                            ? navigate("/login") 
-                                            : navigate("/createAppointment")
-                                        }
-                                    />
-                                </>
-                            )
-                        })}
+                <div className="backgroundImage">
+                    <div className="servicesCardsDesign">
+                        {services.slice(0, 5).map(
+                            service => {
+                                return (
+                                    <>
+                                        <Card
+                                            id={"Nª servicio: " + service.id}
+                                            title={service.serviceName}
+                                            description={service.description}
+                                            clickFunction={() => !tokenData?.token
+                                                ? navigate("/login")
+                                                : navigate("/createAppointment")
+                                            }
+                                        />
+                                    </>
+                                )
+                            })}
+                    </div>
                 </div>
             ) : (
                 <div>LOADING</div>
