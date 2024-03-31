@@ -38,12 +38,12 @@ export const SuperAdmin = () => {
 
     const deleteUser = async (id) => {
         try {
-            // eslint-disable-next-line no-unused-vars
-            const fetched = await DeleteUserBySuperAdmin(tokenData, id)
-
             if (id === tokenData?.decodificado?.userId) {
                 throw new Error("cant delete super admin")
             }
+            // eslint-disable-next-line no-unused-vars
+            const fetched = await DeleteUserBySuperAdmin(tokenData, id)
+            
             setUsers(
                 users.filter((user) => user.id !== id)
             )
