@@ -11,13 +11,14 @@ export const SuperAdmin = () => {
     const tokenData = JSON.parse(localStorage.getItem("passport"))
     const [dbData, setDbData] = useState(false)
     const [users, setUsers] = useState([])
-    
-    const tokenStorage= tokenData?.token
+
+    const tokenStorage = tokenData?.token
 
     useEffect(() => {
         if (tokenData.decodificado.roleName !== ("super_admin")) {
-        navigate ("/")
-    }}, [tokenData])
+            navigate("/")
+        }
+    }, [tokenData])
 
     useEffect(() => {
         if (dbData === false) {
@@ -26,7 +27,7 @@ export const SuperAdmin = () => {
                     const fetched = await GetUsers(tokenStorage)
                     setUsers(fetched.data)
                     setDbData(true)
-                    
+
                 } catch (error) {
                     console.log(error)
                 }
@@ -43,9 +44,9 @@ export const SuperAdmin = () => {
             if (id === tokenData?.decodificado?.userId) {
                 throw new Error("cant delete super admin")
             }
-                setUsers (
+            setUsers(
                 users.filter((user) => user.id !== id)
-                )
+            )
         } catch (error) {
             console.log(error)
         }
@@ -57,25 +58,25 @@ export const SuperAdmin = () => {
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                        <div>
+                    <div>
 
                         {users.slice(0, users.length).map(
                             user => {
                                 return (
                                     <>
-                                     <div className="userListDesign" key={user.id}>
-                                        <UserCard
-                                            firstName={user.firstName}
-                                            lastName={user.lastName}  
-                                            email={user.email}
-                                        />
-                                        <div className="deleteAppointmentDesign">
-                                            <CButton 
-                                            className={"cButtonDesign"}
-                                            title={"Delete User"}
-                                            functionEmit={() => deleteUser(user.id)}
+                                        <div className="userListDesign" key={user.id}>
+                                            <UserCard
+                                                firstName={user.firstName}
+                                                lastName={user.lastName}
+                                                email={user.email}
                                             />
-                                        </div>
+                                            <div className="deleteAppointmentDesign">
+                                                <CButton
+                                                    className={"cButtonDesign"}
+                                                    title={"Delete User"}
+                                                    functionEmit={() => deleteUser(user.id)}
+                                                />
+                                            </div>
                                         </div>
                                     </>
                                 )
@@ -87,7 +88,6 @@ export const SuperAdmin = () => {
         </>
     )
 }
-        
 
-        
-    
+
+

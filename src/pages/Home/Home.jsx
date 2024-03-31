@@ -45,23 +45,23 @@ export const Home = () => {
         <>
             {services.length > 0 ? (
                 <div className="backgroundImage">
-                        {services.slice(0, 5).map(
-                            service => {
-                                return (
-                                    <>
-                                        <Card
-                                            id={"Nª servicio: " + service.id}
-                                            title={service.serviceName}
-                                            description={service.description}
-                                            clickFunction={() => !tokenData?.token
-                                                ? navigate("/login")
-                                                : navigate("/createAppointment")
-                                            }
-                                        />
-                                    </>
-                                )
-                            })}
-                    </div>
+                    {services.slice(0, 5).map(
+                        service => {
+                            return (
+                                <>
+                                    <Card
+                                        id={"Nª servicio: " + service.id}
+                                        title={service.serviceName}
+                                        description={service.description}
+                                        clickFunction={() => !tokenData?.token
+                                            ? navigate("/login")
+                                            : navigate("/createAppointment")
+                                        }
+                                    />
+                                </>
+                            )
+                        })}
+                </div>
             ) : (
                 <div>LOADING</div>
             )}

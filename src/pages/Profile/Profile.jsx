@@ -11,7 +11,7 @@ import "./Profile.css"
 
 
 export const Profile = () => {
-    
+
     const tokenData = JSON.parse(localStorage.getItem("passport"))
     const navigate = useNavigate()
     // eslint-disable-next-line no-unused-vars
@@ -78,21 +78,21 @@ export const Profile = () => {
         }
     }, [user])
 
-        const Update = async () => {
-            try {
-                const fetched = await UpdateProfile(tokenStorage, user)
+    const Update = async () => {
+        try {
+            const fetched = await UpdateProfile(tokenStorage, user)
 
-                setMsgError(fetched.message)
-                console.log(fetched)
+            setMsgError(fetched.message)
+            console.log(fetched)
 
-                setTimeout(() => {
-                    setMsgError("")
-                }, 2000)
+            setTimeout(() => {
+                setMsgError("")
+            }, 2000)
 
-            } catch (error) {
-                setMsgError(error.message)
-            }
+        } catch (error) {
+            setMsgError(error.message)
         }
+    }
 
     return (
         <div className="profileBackgroundDesign">
@@ -102,7 +102,7 @@ export const Profile = () => {
                 <div>
                     <CInput
                         className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
-                        }`}
+                            }`}
                         type={"text"}
                         placeholder={""}
                         name={"firstName"}
@@ -143,7 +143,7 @@ export const Profile = () => {
                     />
                     <div className="error">{msgError}</div>
                 </div>
-            )} 
+            )}
         </div>
     )
 }

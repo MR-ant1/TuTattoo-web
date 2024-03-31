@@ -19,33 +19,33 @@ export const Header = () => {
 
             {tokenData?.token ? (
                 tokenData.decodificado.roleName === "super_admin" ? (
-                    <div className="authMenu"> 
-                    <Navigator
-                    title={"Super Admin"} sendTo={"/superadmin"}
-                    />
-                    <Navigator
-                        title={"Mis Citas"} sendTo={"/myAppointments"}
-                    />
-                    <Navigator
-                        title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
-                    />
-                    <div onClick={logOut}>
-                        <Navigator title={"Cerrar sesión"} sendTo={"/"} />
-                    </div>
+                    <div className="authMenu">
+                        <Navigator
+                            title={"Super Admin"} sendTo={"/superadmin"}
+                        />
+                        <Navigator
+                            title={"Mis Citas"} sendTo={"/myAppointments"}
+                        />
+                        <Navigator
+                            title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
+                        />
+                        <div onClick={logOut}>
+                            <Navigator title={"Cerrar sesión"} sendTo={"/"} />
+                        </div>
                     </div>
                 ) : (
-                <div className="authMenu">
-                    <Navigator
-                        title={"Mis Citas"} sendTo={"/myAppointments"}
-                    />
-                    <Navigator
-                        title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
-                    />
-                    <div onClick={logOut}>
-                        <Navigator title={"Cerrar sesión"} sendTo={"/"} />
+                    <div className="authMenu">
+                        <Navigator
+                            title={"Mis Citas"} sendTo={"/myAppointments"}
+                        />
+                        <Navigator
+                            title={`${tokenData?.decodificado?.firstName}`} sendTo={"/profile"}
+                        />
+                        <div onClick={logOut}>
+                            <Navigator title={"Cerrar sesión"} sendTo={"/"} />
+                        </div>
                     </div>
-                </div>
-            )) : (
+                )) : (
                 <div className="authMenu">
                     <Navigator title={"Registro"} sendTo={"/register"} />
                     <Navigator title={"Login"} sendTo={"/login"} />

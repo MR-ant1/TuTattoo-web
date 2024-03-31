@@ -44,7 +44,7 @@ export const Register = () => {
             [e.target.name + "Error"]: error
         }))
     }
-    
+
     const registration = async () => {
         try {
             for (let elemento in user) {
@@ -56,7 +56,6 @@ export const Register = () => {
             const fetched = await RegisterUser(user)
 
             setMsgError(fetched.message)
-            console.log(fetched)
 
             setTimeout(() => {
                 navigate("/")
