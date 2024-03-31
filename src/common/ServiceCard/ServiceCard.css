@@ -1,11 +1,10 @@
-
 .cardDesign {
     height: 14em;
     width: 26em;
-    border-radius: 0.5em;
-    background-color: rgb(227, 227, 228);
+    border-radius: 2em;
+    background-color: rgb(170, 170, 170);
     margin: 1em;
-    color: solid rgb(0, 0, 0);
+    color: solid rgb(173, 173, 173);
     font-size: 1em;
     display: flex;
     flex-direction: column;
@@ -16,11 +15,12 @@
 
 .cardDesign:hover {
     cursor: pointer;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(143, 143, 143);
     transition: 0.2s;
 }
 
 .titleDesign {
     margin: 1em;
     font-weight: bold;
+    font-size: 1.2rem;
 }

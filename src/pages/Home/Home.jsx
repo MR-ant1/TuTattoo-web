@@ -45,7 +45,6 @@ export const Home = () => {
         <>
             {services.length > 0 ? (
                 <div className="backgroundImage">
-                    <div className="servicesCardsDesign">
                         {services.slice(0, 5).map(
                             service => {
                                 return (
@@ -63,7 +62,6 @@ export const Home = () => {
                                 )
                             })}
                     </div>
-                </div>
             ) : (
                 <div>LOADING</div>
             )}
