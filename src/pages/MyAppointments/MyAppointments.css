@@ -12,9 +12,16 @@
 
 .appointmentsDeleteListDesign {
 
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+
+}
+
+.cButtonDesign {
+    height: 2em;
+    width: 12em;
+    border-radius: 2em;
+    background-color: rgb(183, 24, 24);
 }

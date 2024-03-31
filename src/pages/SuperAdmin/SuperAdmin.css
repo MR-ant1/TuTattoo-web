@@ -7,3 +7,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.userListDesign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

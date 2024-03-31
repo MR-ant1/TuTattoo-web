@@ -137,7 +137,7 @@ export const Profile = () => {
                     />
                     <div className="error">{user.emailError}</div>
                     <CButton
-                        className={"cButtonDesign"}
+                        className={"updateButtonDesign"}
                         title={"Actualizar datos"}
                         functionEmit={Update}
                     />
