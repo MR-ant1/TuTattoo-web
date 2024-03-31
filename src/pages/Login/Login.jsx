@@ -61,7 +61,12 @@ export const Login = () => {
       }
 
       const fetched = await LoginUser(accessData);
-
+      if (fetched.success === true) {
+      setMsgError(`Hola de nuevo, ${tokenData?.decodificado?.firstName} nos alegra verte por tuTattoo!`)
+      setTimeout(() => {
+        navigate("/")
+      }, 1000)
+      }else throw new Error("Email or password incorrect")
 
 
       const decodificado = decodeToken(fetched.token)
@@ -73,12 +78,7 @@ export const Login = () => {
 
       localStorage.setItem("passport", JSON.stringify(tokenData))
 
-      if (fetched.success === true) {
-        setMsgError(`Hola de nuevo, ${tokenData?.decodificado?.firstName} nos alegra verte por tuTattoo!`)
-        setTimeout(() => {
-          navigate("/")
-        }, 1000)
-      } else throw new Error("Email or password incorrect")
+      
 
     } catch (error) {
       setMsgError(error.message);

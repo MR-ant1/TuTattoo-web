@@ -50,11 +50,11 @@ export const NewAppointment = () => {
 
   const newAppointment = async () => {
     try {
-      // for (let elemento in appointmentData) {
-      //   if (appointmentData[elemento] === "") {
-      //     throw new Error("Todos los campos tienen que estar rellenos");
-      //   }
-      // }
+      for (let elemento in appointmentData) {
+        if (appointmentData[elemento] === "") {
+          throw new Error("Todos los campos tienen que estar rellenos");
+        }
+      }
 
       const fetched = await CreateAppointment(tokenStorage, appointmentData);
 
@@ -62,7 +62,7 @@ export const NewAppointment = () => {
 
       fetched.success === true ?
         setTimeout(() => {
-          navigate("/")
+          navigate("/myAppointments")
         }, 2000)
         : navigate("/createAppointment")
 
