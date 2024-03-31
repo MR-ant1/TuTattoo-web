@@ -1,6 +1,7 @@
-.myAppointmentsDesign {
+.myAppointmentsBackgroundDesign {
     height: 88vh;
     width: 100vw;
+    background-image: url('img/BackgroundFront.jpeg');
     margin: 0em;
     padding: 0em;
     background-color: green;

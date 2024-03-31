@@ -1,8 +1,8 @@
-.profileDesign {
+.profileBackgroundDesign {
     height: 88vh;
     width: 100vw;
     background-color: rgb(136, 205, 115);
-
+    background-image: url('img/BackgroundFront.jpeg');
     display: flex;
     flex-direction: column;
     justify-content: center;

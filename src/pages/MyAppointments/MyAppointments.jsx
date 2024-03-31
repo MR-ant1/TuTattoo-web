@@ -54,7 +54,7 @@ export const MyAppointments = () => {
 
     return (
         <>
-            <div className="myAppointmentsDesign">
+            <div className="myAppointmentsBackgroundDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (

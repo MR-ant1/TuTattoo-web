@@ -86,7 +86,7 @@ export const Login = () => {
       };
     
       return (
-        <div className="loginDesign">
+        <div className="loginBackground">
           <div className="loginInfo">
             Inicie sesión para disfrutar de nuestros servicios
           </div>

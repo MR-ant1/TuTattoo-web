@@ -1,7 +1,7 @@
-.allUsersDesign {
+.allUsersBackgroundDesign {
     height: 88vh;
     width: 100vw;
-    background-color: rgb(125, 125, 125);
+    background-image: url('img/BackgroundFront.jpeg');
 
     display: flex;
     flex-direction: column;

@@ -4,9 +4,8 @@ import { CreateAppointment } from "../../services/api.calls"
 import { CInput } from "../../common/CInput/CInput"
 import { CButton } from "../../common/CButton/CButton"
 import { validame } from "../../utils/functions"
-import "./CreateAppointment.css"
 import { useNavigate } from "react-router-dom"
-
+import "./CreateAppointment.css"
 
 export const NewAppointment = () => {
 
@@ -94,15 +93,6 @@ export const NewAppointment = () => {
             onBlurFunction={(e) => checkError(e)}
           />
             <div className="error">{appointmentDataError.serviceIdError}</div>
-           {/* <CInput
-            className={`inputDesign`}
-            type={"text"}
-            placeholder={`${tokenData?.decodificado.userId}`}
-            name={"userId"}
-            disabled={"disabled"}
-            value={tokenData?.userId}
-            onChangeFunction={(e) => inputHandler(e)}
-          /> */}
           <CButton
             className={"cButtonDesign"}
             title={"Create appointment"}

@@ -67,7 +67,7 @@ export const Register = () => {
         }
     }
     return (
-        <div className="registerDesign">
+        <div className="registerBackgroundDesign">
             <CInput
                 className={`inputDesign ${userError.firstNameError !== "" ? "inputDesignError" : ""
                     }`}

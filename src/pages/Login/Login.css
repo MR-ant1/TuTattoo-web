@@ -1,5 +1,6 @@
 
-.loginDesign {
+.loginBackground {
+    background-image: url('img/BackgroundFront.jpeg');
     height: 88vh;
     width: 100vw;
     background-color: aquamarine;

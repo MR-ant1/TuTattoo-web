@@ -95,7 +95,7 @@ export const Profile = () => {
         }
 
     return (
-        <div className="profileDesign">
+        <div className="profileBackgroundDesign">
             {!dbData ? (
                 <div>LOADING</div>
             ) : (

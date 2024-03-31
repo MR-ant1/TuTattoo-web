@@ -53,7 +53,7 @@ export const SuperAdmin = () => {
 
     return (
         <>
-            <div className="allUsersDesign">
+            <div className="allUsersBackgroundDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
