@@ -12,16 +12,7 @@ export const Home = () => {
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
-
-    // const [dbData, setDbData] = useState(false)
-
     const [services, setServices] = useState([])
-
-    // const serviceError?
-
-    //const inputhandler?
-
-    // useEffect para click en card ID?
 
     useEffect(() => {
         if (services.length === 0) {
@@ -38,8 +29,6 @@ export const Home = () => {
             servicesShowcase()
         }
     }, [services])
-
-
 
     return (
         <>

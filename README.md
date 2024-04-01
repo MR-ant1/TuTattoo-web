@@ -39,7 +39,7 @@ This Front-end proyect allows to create and to log in a user to write posts to s
 
 ### HOW TO DOWNLOAD AND RUN IT :mag: 
 
-Here you can find the link to the backend repository:
+Here you can find the link to the backend repository and the README:
 
 https://github.com/MR-ant1/Tattoo-API.git
 
@@ -124,8 +124,8 @@ npm i
 ``` bash
 npm run dev
 ```
-</details>
 
+</details>
 
 ### FRONT DESIGN :computer:
 
@@ -164,8 +164,106 @@ To make the body routes work, we'll need BrowserRoutes we definded before and th
 
 This allows to invoque navigate variable that sends to the route we give inside ("/")
 
-Once we have the main structure of our web done, we add css designs to all this previous components from the page to make possible to evaluate if works correctly
-The remaining work consist on implement pages and logic to make them work. 
+Once we have the main structure of our web done, we add css designs to all this previous components from the page to make possible to evaluate if it works correctly
+
+The remaining work consist on implement pages and logic to make them work. I will describe each of them next.
+
+<details>
+<summary>## PAGES</summary>
+
+---------------------------------------------
+
+- REGISTER
+
+![alt text](img/RegisterLogic.png)
+
+In register page, we create a function where first all user, error and action functions are defined, and then in the return, 4 inputs and a custom button are throwed.
+
+![alt text](img/RegisterReturn.png)
+
+InputHandler function make the inputs able to dinamicly change while someone types in each key value from user object. Same use from InputHandler is given to check any error when we go outside the field. Both functions are defined in our CIunput model:
+
+![alt text](img/CInputFile.png)
+
+OnChangeFunction holds the typing change functionality and onBlurFunction, the event of check error when leaving each field.
+
+Finally, the CButton contains "registration" function, making it run when we click in this component.
+
+![alt text](img/CButtonFile.png)
+
+Like its done in CInput, the props are given to the button to allow introduce registration function and add some design.
+
+-------------------------------------------
+
+- LOGIN:
+
+Login use a similar structure with a function that contains user data in an object to send to backend four fields with the same structure we prepared in there. InputHandler function and checkerror are included too for fields email and password from user.
+
+![alt text](img/LoginLogic.png)
+
+The loginMe function sends to api.calls file the data introduced in inputs (after each field passes its checkError function), and there, LoginUser makes the conection with backend and send JSON data.
+
+Then, if accessData is correct, backend response contains the token info that is saved into our tokenData variable in localstorage. That is how we will be able to get user,s name, id and role in other pages.
+
+[text](src/services/api.calls.js)
+
+In api.calls, the function LoginUser defines a clientData variable with the required formatted data needed our backend's client. (in this case method, headers and body with inputs data from register page).
+
+With al this functionality, Login throws two fields and a register me button, with same structure that in register.
+
+![alt text](img/LoginReturn.png)
+
+-----------------------------------------
+
+- PROFILE
+
+![alt text](img/ProfileLogic.png)
+
+Profile page works similar to login and register page throwing 3 inputs with user info bringed from database with useEffect function when page loads. The main difference is the new function Upload which sends new data typed in inputs like other ones but using a PUT method to upload values in DB.
+Email field is not editable so a disabled prop were addded to not allow this action.
+
+-----------------------------------------
+
+- HOME
+
+[text](src/pages/Home/Home.jsx)
+
+Home function first part is different and doesn't need inputHandler function. We add a useEffect to run the GET services data function when loading page. getServices works almost like previous login and register functions sending data to api.calls and then to backend.
+
+The main difference in this and other pages, is that return doesnt throw inputs. This time services Data is defined up as an empty array, and a map method is in return iterating a card for each object bringed by database with keys defined in card component previously defined in its own file:
+
+![alt text](img/CardFile.png)
+
+-----------------------------------------
+
+- CREATE APPOINTMENT 
+
+This page uses the same structure that register uses with inputs. Throws two inputs for Date and service user wants in his appointment. Button creates a new appointment if no errors are throwed by inputs. The format needed is delcared in placeholder text to help you.
+
+![alt text](img/CreateAppointmentPage.png)
+
+-----------------------------------------------
+
+- MY APPOINTMENTS
+
+In this page, appointments for the user logged are located and showed. There is a button for each appointment which allows deleting it and inmediately dissapears from db and screen. The way cards are displayed is like in home, with a map where we define an appointment card to be filled by each back item in response.
+
+![alt text](img/MyAppointmentsReturn.png)
+
+The delete function calls to Delete function in function and execute the endpoint from back. The getAppointments function executes when page is loaded with useEffect. Delete waits to be called in CButton
+
+![alt text](img/MyAppointmentsLogic.png)
+
+-------------------------------------------------
+
+- SUPER ADMIN
+
+It works like myAppointments with a map iterating cards, but this time all users are bringed from DB and only super_admin (access controled at beginning of function) can delete any user excepting himself from DB. There are a Card and a CButton on each element from the map so each user has a delete button on his side.
+
+![alt text](img/SuperAdminPage.png)
+
+
+</details>
 
 
 
