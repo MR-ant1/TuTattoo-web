@@ -1,6 +1,7 @@
-.myAppointmentsDesign {
-    height: 88vh;
+.myAppointmentsBackgroundDesign {
+    height: 90vh;
     width: 100vw;
+    background-image: url('img/BackgroundFront.jpeg');
     margin: 0em;
     padding: 0em;
     background-color: green;
@@ -11,9 +12,16 @@
 
 .appointmentsDeleteListDesign {
 
-    display:flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+
+}
+
+.cButtonDesign {
+    height: 2em;
+    width: 12em;
+    border-radius: 2em;
+    background-color: rgb(183, 24, 24);
 }

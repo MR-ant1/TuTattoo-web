@@ -8,7 +8,7 @@ import "./MyAppointments.css"
 
 
 export const MyAppointments = () => {
-    
+
     const [dbData, setdbData] = useState(false)
     const navigate = useNavigate()
     const tokenData = JSON.parse(localStorage.getItem("passport"))
@@ -44,9 +44,9 @@ export const MyAppointments = () => {
         try {
             // eslint-disable-next-line no-unused-vars
             const fetched = await DeleteAppointmentById(tokenData, id)
-            setAppointments (
+            setAppointments(
                 appointments.filter((appointment) => appointment.id !== id)
-                )
+            )
         } catch (error) {
             console.log(error)
         }
@@ -54,27 +54,27 @@ export const MyAppointments = () => {
 
     return (
         <>
-            <div className="myAppointmentsDesign">
+            <div className="myAppointmentsBackgroundDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                        <div>
+                    <div>
                         {appointments.map(
                             appointment => {
                                 return (
                                     <>
-                                     <div className="appointmentsDeleteListDesign" key={appointment.id}>
-                                        <AppointmentCard
-                                            appointmentDate={appointment.appointmentDate}
-                                            service={appointment.service.serviceName}   
-                                        />
-                                        <div className="deleteAppointmentDesign">
-                                            <CButton 
-                                            className={"cButtonDesign"}
-                                            title={"Delete Appointment"}
-                                            functionEmit={() => deleteMyappointment(appointment.id)}
+                                        <div className="appointmentsDeleteListDesign" key={appointment.id}>
+                                            <AppointmentCard
+                                                appointmentDate={appointment.appointmentDate}
+                                                service={appointment.service.serviceName}
                                             />
-                                        </div>
+                                            <div className="deleteAppointmentDesign">
+                                                <CButton
+                                                    className={"cButtonDesign"}
+                                                    title={"Delete Appointment"}
+                                                    functionEmit={() => deleteMyappointment(appointment.id)}
+                                                />
+                                            </div>
                                         </div>
                                     </>
                                 )

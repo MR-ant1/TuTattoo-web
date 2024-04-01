@@ -1,14 +1,12 @@
 
-.registerDesign {
-    height: 88vh;
+.registerBackgroundDesign {
+    height: 90vh;
     width: 100vw;
-
+    background-image: url('img/BackgroundFront.jpeg');
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background-color: rgb(210, 210, 208);
 }
 
 .error {

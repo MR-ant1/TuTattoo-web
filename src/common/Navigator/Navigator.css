@@ -1,13 +1,12 @@
-
 .navigatorDesign {
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
     transition: 0.2s;
     margin: 1em;
 }
 
 .navigatorDesign:hover {
-    color:yellow;
+    color: rgb(45, 45, 45);
     transition: 0.2s;
     cursor: pointer
 }

@@ -1,15 +1,36 @@
-.profileDesign {
-    height: 88vh;
+.profileBackgroundDesign {
+    height: 90vh;
     width: 100vw;
-    background-color: rgb(136, 205, 115);
-
+    background-image: url('img/BackgroundFront.jpeg');
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
+.inputDesign {
+    display: flex;
+    justify-content: center;
+}
+
+.updateButtonDesign {
+    height: 2em;
+    width: 12em;
+
+    border-radius: 0.5em;
+
+    background-color: rgb(8, 66, 8);
+    color: white;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    margin-left: 2.4em;
+}
+
 .error {
-height: 1em;
-color: red;
+    height: 1em;
+    color: red;
 }

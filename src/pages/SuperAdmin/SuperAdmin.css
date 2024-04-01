@@ -1,9 +1,15 @@
-.allUsersDesign {
-    height: 88vh;
+.allUsersBackgroundDesign {
+    height: 90vh;
     width: 100vw;
-    background-color: rgb(125, 125, 125);
+    background-image: url('img/BackgroundFront.jpeg');
 
     display: flex;
     flex-direction: column;
+}
+
+.userListDesign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }

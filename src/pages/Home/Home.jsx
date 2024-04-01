@@ -12,16 +12,7 @@ export const Home = () => {
     // eslint-disable-next-line no-unused-vars
     const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
 
-
-    // const [dbData, setDbData] = useState(false)
-
     const [services, setServices] = useState([])
-
-    // const serviceError?
-
-    //const inputhandler?
-
-    // useEffect para click en card ID?
 
     useEffect(() => {
         if (services.length === 0) {
@@ -39,30 +30,26 @@ export const Home = () => {
         }
     }, [services])
 
-
-
     return (
         <>
             {services.length > 0 ? (
                 <div className="backgroundImage">
-                    <div className="servicesCardsDesign">
-                        {services.slice(0, 5).map(
-                            service => {
-                                return (
-                                    <>
-                                        <Card
-                                            id={"Nª servicio: " + service.id}
-                                            title={service.serviceName}
-                                            description={service.description}
-                                            clickFunction={() => !tokenData?.token
-                                                ? navigate("/login")
-                                                : navigate("/createAppointment")
-                                            }
-                                        />
-                                    </>
-                                )
-                            })}
-                    </div>
+                    {services.slice(0, 5).map(
+                        service => {
+                            return (
+                                <>
+                                    <Card
+                                        id={"Nª servicio: " + service.id}
+                                        title={service.serviceName}
+                                        description={service.description}
+                                        clickFunction={() => !tokenData?.token
+                                            ? navigate("/login")
+                                            : navigate("/createAppointment")
+                                        }
+                                    />
+                                </>
+                            )
+                        })}
                 </div>
             ) : (
                 <div>LOADING</div>

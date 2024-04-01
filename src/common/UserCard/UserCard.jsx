@@ -1,5 +1,5 @@
-import "./UserCard.css"
 
+import "./UserCard.css"
 // eslint-disable-next-line react/prop-types
 export const UserCard = ({ key, firstName, lastName, email }) => {
 
