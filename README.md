@@ -1,17 +1,22 @@
+# FRONT TUTATOO WEB
+
+![alt text](img/TitleImg.jpg)
+
 ### TARGET :dart:
-The target of this proyect is to recreate the backend of a basic social network in which you can send posts to be seen by all users and interact with the other members's posts.
+The target of this proyect is to recreate the frontend of a basic e-shop in which you can book new appointments and see services from the shop.
 
 ### INDEX :open_file_folder: 
-- [TARGET :dart:](#target-dart)
-- [INDEX :open\_file\_folder:](#index-open_file_folder)
-- [STACK :wrench:](#stack-wrench)
-- [ABOUT API :blue\_book:](#about-api-blue_book)
-- [DB diagram :clipboard:](#db-diagram-clipboard)
-- [HOW TO DOWNLOAD AND RUN IT :mag:](#how-to-download-and-run-it-mag)
-- [FRONT DESIGN :computer:](#front-design-computer)
-- [AUTHOR :pencil2:](#author-pencil2)
-- [POSIBLE IMPROVEMENTS :heavy\_check\_mark:](#posible-improvements-heavy_check_mark)
-- [ACKNOWLEDGEMENTS :raised\_hands:](#acknowledgements-raised_hands)
+- [FRONT TUTATOO WEB](#front-tutatoo-web)
+    - [TARGET :dart:](#target-dart)
+    - [INDEX :open\_file\_folder:](#index-open_file_folder)
+    - [STACK :wrench:](#stack-wrench)
+    - [ABOUT API :blue\_book:](#about-api-blue_book)
+    - [DB diagram :clipboard:](#db-diagram-clipboard)
+    - [HOW TO DOWNLOAD AND RUN IT :mag:](#how-to-download-and-run-it-mag)
+    - [FRONT DESIGN :computer:](#front-design-computer)
+    - [AUTHOR :pencil2:](#author-pencil2)
+    - [POSSIBLE IMPROVEMENTS :heavy\_check\_mark:](#possible-improvements-heavy_check_mark)
+    - [ACKNOWLEDGEMENTS :raised\_hands:](#acknowledgements-raised_hands)
 
 ### STACK :wrench:
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NODE.JS" /><img src="https://camo.githubusercontent.com/e401a9130accddec63964fc1656e5ef2970017dc65ca6540ab19a40bf6c20064/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d7973716c2d3345364539333f7374796c653d666f722d7468652d6261646765266c6f676f3d6d7973716c266c6f676f436f6c6f723d7768697465" alt="MySql">
@@ -20,17 +25,14 @@ The target of this proyect is to recreate the backend of a basic social network 
 
 ### ABOUT API :blue_book:
 
-This Front-end proyect allows to create and to log in a user to write posts to share with the rest of the people. You will interact in different ways:
+This Front-end proyect allows to create and to log in a user to interact with a tattoo shop service. You will interact in different ways:
 
-- Registering and log in your new user before doing any action over your profile or posts
-- Reading any post from any user by searching for their account.
+- Registering and log in your new user before doing any action over your appointments or profile.
+- Consult the five services offered by the shop.
 - Checking or update your profile info
-- Creation of new posts where you can add a title and a text. This post can receive likes from all others users and you can also give or remove likes to your own or other users posts
-- Delete, update or look for your own posts. Also look for other users posts by their profile ID, or by Post ID
-- Consulting all existent users info (super_admin)
-- Follow other users accounts.
-- Update a users role to give him more permissions (super_admin)
-- See the timeline with posts from the users you follow
+- Creation of new appointments where you add the date and a service to buy.
+- Check and delete your own appointments.
+- Consulting all existent users info and possibility of delete them (super_admin)
 
 
 ### DB diagram :clipboard:
@@ -39,15 +41,15 @@ This Front-end proyect allows to create and to log in a user to write posts to s
 
 ### HOW TO DOWNLOAD AND RUN IT :mag: 
 
-Here you can find the link to the backend repository and the README:
-
-https://github.com/MR-ant1/Tattoo-API.git
-
-and down here, the link to THIS PROYECT's repository:
-
+Here you can find the link to THIS REPOSITORY:
 https://github.com/MR-ant1/TuTattoo-web.git
 
+and down here, the link to the backend repository and its README explaining how it works:
+https://github.com/MR-ant1/Tattoo-API.git
+
+
 Follow the next steps to prepare the API's environment and make it work correctly:
+
 <details>
 <summary>INSTRUCTIONS</summary>
 
@@ -56,7 +58,7 @@ Follow the next steps to prepare the API's environment and make it work correctl
 - <a href=https://www.docker.com/products/docker-desktop/ > Docker</a>
 - <a href=https://downloads.mysql.com/archives/workbench/ > MySql Workbrench</a>
   
-Go docker and download an image of MySql with command:
+2. Go to windows PowerShell and download an image of MySql with command:
 ``` bash
 docker pull mysql
 ``` 
@@ -67,22 +69,24 @@ and then type this command to open a new container to our backend:
 docker run --name mysql-container -p 3307:3306 -e MYSQL_ROOT_PASSWORD=1234 -d mysql
 ```
 
-1. Create a folder to the proyect, open it and execute this command in console:
-``` hash
-git: init
+3. In docker desktop, start the container that will appear in main view by pressing play button.
+
+4. Create a folder to the proyect, open it and execute this command in console:
+``` bash
+git init
 ```
 Once we do it, Clone the repository with the command "git clone https://github.com/MR-ant1/Tattoo-API.git
 
 Make same steps with another folder and clone the front repository with this link and same command: "git clone https://github.com/MR-ant1/TuTattoo-web.git"
 
-1. Execute in terminal, in order of appaerance, the next commands in both proyects:
+5. Execute in terminal, in order of appaerance, the next commands in both proyects:
 ``` bash
 npm init --y
 ```
 ``` bash
 npm install
 ```
-1. Create file ".env" in api tattoo backend. Use sample incluided with references needed to introduce our container data and be able to run server and database. 
+6. Create file ".env" in api tattoo backend. Use sample incluided with references needed to introduce our container data and be able to run server and database. 
 
 ``` bash
 PORT=4001
@@ -95,14 +99,14 @@ DB_DATABASE=API_TATTOO
 
 JWT_SECRET=secreto
 ```
-1. Create a new connection in MySql workbrench introducing PORT used for docker container.
+7. Create a new connection in MySql workbrench introducing PORT used for docker container.
 
-1. Create the tables in our DB with the next command:
+8. Create the tables in our DB with the next command:
 ``` bash
 npm run migrations-run
 ```
 
-2. Execute seeders through command:
+9. Execute seeders through command:
 ``` bash
 npm run seed
 ```
@@ -111,13 +115,11 @@ or
 node ./src/database/seeders/seeder.js 
 ```
 With this, we'll adding our data to the Database, so we can check all data in workbrench
-1. Run the server with command:
+10. Run the server with command:
 ``` bash
 npm run dev
 ```
-1. Go to the client an import collection file included in HTTP folder
-2.  Now you have all prepared to try the different functions from the API. Continue reading to find all instructions about it.
-3.  After all this, we will have to run this same commands in the front proyect to install dependencies:
+11.   After all this, we will have to run this same commands in the front proyect to install dependencies:
 ``` bash
 npm i
 ```
@@ -169,13 +171,16 @@ Once we have the main structure of our web done, we add css designs to all this 
 The remaining work consist on implement pages and logic to make them work. I will describe each of them next.
 
 <details>
-<summary>## PAGES</summary>
+<summary>PAGES</summary>
 
 ---------------------------------------------
 
-- REGISTER
+<details>
+<summary>REGISTER</summary>
 
 ![alt text](img/RegisterLogic.png)
+
+![alt text](img/RegisterView.png)
 
 In register page, we create a function where first all user, error and action functions are defined, and then in the return, 4 inputs and a custom button are throwed.
 
@@ -195,17 +200,22 @@ Like its done in CInput, the props are given to the button to allow introduce re
 
 -------------------------------------------
 
-- LOGIN:
+</details>
+
+<details>
+<summary>LOGIN</summary>
 
 Login use a similar structure with a function that contains user data in an object to send to backend four fields with the same structure we prepared in there. InputHandler function and checkerror are included too for fields email and password from user.
 
 ![alt text](img/LoginLogic.png)
 
+![alt text](img/LoginView.png)
+
 The loginMe function sends to api.calls file the data introduced in inputs (after each field passes its checkError function), and there, LoginUser makes the conection with backend and send JSON data.
 
 Then, if accessData is correct, backend response contains the token info that is saved into our tokenData variable in localstorage. That is how we will be able to get user,s name, id and role in other pages.
 
-[text](src/services/api.calls.js)
+![alt text](img/LoginUser.png)
 
 In api.calls, the function LoginUser defines a clientData variable with the required formatted data needed our backend's client. (in this case method, headers and body with inputs data from register page).
 
@@ -215,18 +225,30 @@ With al this functionality, Login throws two fields and a register me button, wi
 
 -----------------------------------------
 
-- PROFILE
+</details>
+
+<details>
+<summary>PROFILE</summary>
 
 ![alt text](img/ProfileLogic.png)
+
+![alt text](img/ProfileView.png)
 
 Profile page works similar to login and register page throwing 3 inputs with user info bringed from database with useEffect function when page loads. The main difference is the new function Upload which sends new data typed in inputs like other ones but using a PUT method to upload values in DB.
 Email field is not editable so a disabled prop were addded to not allow this action.
 
 -----------------------------------------
 
-- HOME
+</details>
 
-[text](src/pages/Home/Home.jsx)
+<details>
+<summary>HOME</summary>
+
+![alt text](img/HomePage.png)
+
+![alt text](img/HomeView.png)
+
+This page acts as the land page were user first access, and as a services showcase. Only allows go to book a service if user logged in before.
 
 Home function first part is different and doesn't need inputHandler function. We add a useEffect to run the GET services data function when loading page. getServices works almost like previous login and register functions sending data to api.calls and then to backend.
 
@@ -236,15 +258,23 @@ The main difference in this and other pages, is that return doesnt throw inputs.
 
 -----------------------------------------
 
-- CREATE APPOINTMENT 
+</details>
+
+<details>
+<summary>CREATE APPOINTMENTS</summary>
 
 This page uses the same structure that register uses with inputs. Throws two inputs for Date and service user wants in his appointment. Button creates a new appointment if no errors are throwed by inputs. The format needed is delcared in placeholder text to help you.
 
 ![alt text](img/CreateAppointmentPage.png)
 
+![alt text](img/CreateAppointmentView.png)
+
 -----------------------------------------------
 
-- MY APPOINTMENTS
+</details>
+
+<details>
+<summary>MY APPOINTMENTS</summary>
 
 In this page, appointments for the user logged are located and showed. There is a button for each appointment which allows deleting it and inmediately dissapears from db and screen. The way cards are displayed is like in home, with a map where we define an appointment card to be filled by each back item in response.
 
@@ -254,34 +284,41 @@ The delete function calls to Delete function in function and execute the endpoin
 
 ![alt text](img/MyAppointmentsLogic.png)
 
+![alt text](img/MyAppointmentsView.png)
+
 -------------------------------------------------
 
-- SUPER ADMIN
+</details>
+
+<details>
+<summary>SUPER ADMIN</summary>
 
 It works like myAppointments with a map iterating cards, but this time all users are bringed from DB and only super_admin (access controled at beginning of function) can delete any user excepting himself from DB. There are a Card and a CButton on each element from the map so each user has a delete button on his side.
 
 ![alt text](img/SuperAdminPage.png)
 
+![alt text](img/SuperAdminView.png)
+
+---------------------------------------------------
 
 </details>
 
-
+</details>
 
 ###  AUTHOR :pencil2:
 - Antonio Rodrigo - Full Stack Developer student
 
 - <a href="https://github.com/MR-ant1">GitHub - <a>Linkedin</a>
 
-### POSIBLE IMPROVEMENTS :heavy_check_mark: 
+### POSSIBLE IMPROVEMENTS :heavy_check_mark: 
 
-- A follow users function could be included in future versions to improve the experience of the network
-- Controllers and validations could have been more abstracted and separated in different files in order to locate each action in different files and make the API more scalable
-- Some more possible changes to allow create a better Timeline with the users each one follows, after include follow function.
-- In the future, a change password endpoint with extra validation of recent password to allow the change will be added.
+- Lists of users and appointments need a better design to not exceed the screen borders or show in groups.
+- Web should be responsive, but in this academic proyect the main target is to make pages and components work.
+- When any user update his firstName, value in profile's header section should update too, but at the moment is necessary to logout and login again to see this componen updated.
+- Some of the info messages when success is true in any action, should have a different color than the error messages
 
 ### ACKNOWLEDGEMENTS :raised_hands:
 Big shout out like always to the GeeksHubs team for giving me the change of learning in this wonderful world of developping! 
-
 
 [def]: #Acknowledgements-
 

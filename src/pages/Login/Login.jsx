@@ -62,7 +62,7 @@ export const Login = () => {
 
       const fetched = await LoginUser(accessData);
       if (fetched.success === true) {
-      setMsgError(`Hola de nuevo, nos alegra verte por tuTattoo!`)
+      setMsgError(`Hola de nuevo, nos alegra verte por TuTattoo!`)
       setTimeout(() => {
         navigate("/")
       }, 1000)
