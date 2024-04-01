@@ -40,14 +40,14 @@ export const MyAppointments = () => {
         }
     }, [appointments])
 
-    //Delete function sends appointment id (using the id in clicked button) and tokenData to check if its a self appointment
+    //Delete function sends appointment id (using the id in clicked button) and tokenData to check if its a self appointment.
     const deleteMyappointment = async (id) => {
         try {
             // eslint-disable-next-line no-unused-vars
             const fetched = await DeleteAppointmentById(tokenData, id)
-            setAppointments(
-                appointments.filter((appointment) => appointment.id !== id) //removing the deleted appointment from view with no need of reload page
-            )
+            setAppointments(    
+                appointments.filter((appointment) => appointment.id !== id) 
+            )                  //Removing the deleted appointment from view with no need of reload. Compare all user ids with the selected to delete and excludes it.
         } catch (error) {
             console.log(error)
         }
