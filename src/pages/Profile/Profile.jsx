@@ -77,10 +77,10 @@ export const Profile = () => {
             getUserProfile()
         }
     }, [user])
-
+                                    //update function sends user data from inputs and token to allow only each user to modify its own profile.
     const Update = async () => {
         try {
-            const fetched = await UpdateProfile(tokenStorage, user)
+            const fetched = await UpdateProfile(tokenStorage, user) 
 
             setMsgError(fetched.message)
             console.log(fetched)
@@ -107,7 +107,7 @@ export const Profile = () => {
                         placeholder={""}
                         name={"firstName"}
                         disabled={""}
-                        value={user.firstName || ""}
+                        value={user.firstName || ""}    //Previous value of every field is showed and can be modified and updated pressing down button.
                         onChangeFunction={(e) => inputHandler(e)}
                         onBlurFunction={(e) => checkError(e)}
                     />

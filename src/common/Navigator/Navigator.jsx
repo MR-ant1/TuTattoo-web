@@ -13,3 +13,5 @@ export const Navigator = ({ title, sendTo }) => {
         </div>
     )
 }
+
+//Here navigator is defined and will allow to move from any page to other one by importing it.

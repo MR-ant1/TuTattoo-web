@@ -52,14 +52,15 @@ export const Register = () => {
                     throw new Error("Todos los campos deben estar rellenos")
                 }
             }
-
+            
             const fetched = await RegisterUser(user)
 
             setMsgError(fetched.message)
-
-            setTimeout(() => {
+            
+            if (fetched.success === true){
+            setTimeout(() => {          //After ending registration, page redirects to home.
                 navigate("/")
-            }, 500)
+            }, 500)}else navigate("/register")
 
         } catch (error) {
             setMsgError(error.message)

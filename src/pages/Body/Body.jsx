@@ -8,11 +8,13 @@ import { NewAppointment } from "../CreateAppointment/CreateAppointment"
 import { MyAppointments } from "../MyAppointments/MyAppointments"
 import { SuperAdmin } from "../SuperAdmin/SuperAdmin"
 
+//Body act as a router and his only function is to contain routes to different pages. The first Route works rerouting home if url specifies an undefined page
+
 export const Body = () => {
 
     return (
         <Routes>
-            <Route path="*" element={<Navigate to={"/"} replace />} />
+            <Route path="*" element={<Navigate to={"/"} replace />} />  
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

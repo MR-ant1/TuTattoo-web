@@ -26,12 +26,12 @@ export const MyAppointments = () => {
     }, [tokenStorage])
 
     useEffect(() => {
-        if (dbData === false) {
+        if (dbData === false) {                         //When dbData is false, getUserAppointments brings them only if the user owns that appointments
             const getUserAppointments = async () => {
                 try {
-                    const fetched = await GetMyAppointments(tokenStorage)
-                    setAppointments(fetched.data)
-                    setdbData(true)
+                    const fetched = await GetMyAppointments(tokenStorage)   //tokenStorage as a parameter to allow search appointments with the user's id
+                    setAppointments(fetched.data)   //pushing data to appointments array
+                    setdbData(true)                    //Finally if all previous actions are done, dbData is setted to true. Now this acn be used in a condition
                 } catch (error) {
                     console.log(error)
                 }
@@ -40,12 +40,13 @@ export const MyAppointments = () => {
         }
     }, [appointments])
 
+    //Delete function sends appointment id (using the id in clicked button) and tokenData to check if its a self appointment
     const deleteMyappointment = async (id) => {
         try {
             // eslint-disable-next-line no-unused-vars
             const fetched = await DeleteAppointmentById(tokenData, id)
             setAppointments(
-                appointments.filter((appointment) => appointment.id !== id)
+                appointments.filter((appointment) => appointment.id !== id) //removing the deleted appointment from view with no need of reload page
             )
         } catch (error) {
             console.log(error)
