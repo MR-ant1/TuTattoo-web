@@ -2,11 +2,12 @@
     height: 90vh;
     width: 100vw;
     background-image: url('img/BackgroundFront.jpeg');
-
-    display: flex;
-    flex-direction: column;
 }
 
+.userGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+}
 .userListDesign {
     display: flex;
     flex-direction: column;

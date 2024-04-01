@@ -59,7 +59,7 @@ export const MyAppointments = () => {
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                    <div>
+                    <div className="appointmentsGrid">
                         {appointments.map(
                             appointment => {
                                 return (

@@ -5,15 +5,17 @@
     margin: 0em;
     padding: 0em;
     background-color: green;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+}
+
+.appointmentsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
 }
 
 .appointmentsDeleteListDesign {
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 

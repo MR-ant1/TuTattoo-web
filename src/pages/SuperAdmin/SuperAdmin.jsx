@@ -53,13 +53,11 @@ export const SuperAdmin = () => {
     }
 
     return (
-        <>
             <div className="allUsersBackgroundDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                    <div>
-
+                    <div className="userGrid">
                         {users.slice(0, users.length).map(
                             user => {
                                 return (
@@ -83,7 +81,6 @@ export const SuperAdmin = () => {
                 )
                 }
             </div>
-        </>
     )
 }
 
