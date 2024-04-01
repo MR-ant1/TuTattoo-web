@@ -10,3 +10,5 @@ export const CButton = ({ className, title, functionEmit }) => {
         </div>
     )
 }
+
+//CButton receives a className to edit its design, a title prop to show on each different button and a functionEmit containing a function to run in each button

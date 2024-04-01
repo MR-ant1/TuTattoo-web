@@ -17,13 +17,13 @@ export const Header = () => {
         <div className="headerDesign">
             <Navigator title={"Home/Showcase"} sendTo={"/"} />
 
-            {tokenData?.token ? (
-                tokenData.decodificado.roleName === "super_admin" ? (
+            {tokenData?.token ? (                                           //Condition to use header for not logged users/logged users
+                tokenData.decodificado.roleName === "super_admin" ? (       // This second condition checks if the user is super_admin to show that page or not
                     <div className="authMenu">
                         <Navigator
                             title={"Super Admin"} sendTo={"/superadmin"}
                         />
-                        <Navigator
+                        <Navigator                                          //LOGGED AND USER IS SUPER ADMIN
                             title={"Mis Citas"} sendTo={"/myAppointments"}
                         />
                         <Navigator
@@ -33,7 +33,7 @@ export const Header = () => {
                             <Navigator title={"Cerrar sesión"} sendTo={"/"} />
                         </div>
                     </div>
-                ) : (
+                ) : (                                                       // LOGGED AND USER IS NOT A SUPER ADMIN
                     <div className="authMenu">
                         <Navigator
                             title={"Mis Citas"} sendTo={"/myAppointments"}
@@ -45,7 +45,7 @@ export const Header = () => {
                             <Navigator title={"Cerrar sesión"} sendTo={"/"} />
                         </div>
                     </div>
-                )) : (
+                )) : (                                                      //Here start the sections for header when no logged
                 <div className="authMenu">
                     <Navigator title={"Registro"} sendTo={"/register"} />
                     <Navigator title={"Login"} sendTo={"/login"} />

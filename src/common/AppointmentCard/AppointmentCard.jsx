@@ -10,3 +10,5 @@ export const AppointmentCard = ({ key, appointmentDate, service }) => {
         </div>
     )
 }
+
+// Props that our service card in home will need to show. 

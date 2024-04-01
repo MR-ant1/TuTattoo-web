@@ -11,3 +11,5 @@ export const UserCard = ({ key, firstName, lastName, email }) => {
         </div>
     )
 }
+
+//Card props for super admin view.

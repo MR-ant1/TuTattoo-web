@@ -193,9 +193,6 @@ export const DeleteAppointmentById = async (tokenData, id) => {
         }
     }
 
-    console.log(tokenData.token)
-    console.log(id)
-
     try {
         const response = await fetch(`${root}appointments/${id}`, clientData)
 

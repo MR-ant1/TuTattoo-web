@@ -10,19 +10,19 @@ import "./CreateAppointment.css"
 export const NewAppointment = () => {
 
   const navigate = useNavigate()
-  const tokenData = JSON.parse(localStorage.getItem("passport"))
+  const tokenData = JSON.parse(localStorage.getItem("passport"))   //importing tokenData save when loggin in localStorage to include userId in new appointment
 
   // eslint-disable-next-line no-unused-vars
   const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
-  // {const appointmentDate = date + "T" + time }
 
-  const [appointmentData, setAppointmentData] = useState({
+//Using useState, an appointmentData variable with an object containing the keys sent to endpoint is created
+  const [appointmentData, setAppointmentData] = useState({    
     appointmentDate: "",
     serviceId: "",
     userId: tokenData?.decodificado?.userId
   })
 
-
+  //defined fields errors empties by default. They will be filled with each error message using setAppointmentDataError
   const [appointmentDataError, setAppointmentDataError] = useState({
     appointmentDateError: "",
     serviceIdError: ""
@@ -54,13 +54,13 @@ export const NewAppointment = () => {
         if (appointmentData[elemento] === "") {
           throw new Error("Todos los campos tienen que estar rellenos");
         }
-      }
+      } //Checks if some field is empty and throws an error
 
       const fetched = await CreateAppointment(tokenStorage, appointmentData);
 
       setMsgError(fetched.message)
 
-      fetched.success === true ?
+      fetched.success === true ?    //If credentials are correct, sends to home. If not, keep user in same view.
         setTimeout(() => {
           navigate("/myAppointments")
         }, 2000)
@@ -97,7 +97,7 @@ export const NewAppointment = () => {
       <CButton
         className={"cButtonDesign"}
         title={"Create appointment"}
-        functionEmit={newAppointment}
+        functionEmit={newAppointment} //Calling register function
       />
       <div className="error">{msgError}</div>
     </div>
