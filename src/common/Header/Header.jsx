@@ -15,7 +15,7 @@ export const Header = () => {
     //Adding register navigation to allow move from header. Included a token validation to show register and login or icon to profile and log out (future)
     return (
         <div className="headerDesign">
-            <Navigator title={"Home/Showcase"} sendTo={"/"} />
+            <Navigator title={"Inicio/Catalogo"} sendTo={"/"} />
 
             {tokenData?.token ? (                                           //Condition to use header for not logged users/logged users
                 tokenData.decodificado.roleName === "super_admin" ? (       // This second condition checks if the user is super_admin to show that page or not
