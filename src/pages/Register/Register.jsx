@@ -53,7 +53,6 @@ export const Register = () => {
                 }
             }
             
-            
             const fetched = await RegisterUser(user)
 
             setMsgError(fetched.message)

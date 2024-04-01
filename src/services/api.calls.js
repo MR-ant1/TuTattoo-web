@@ -8,11 +8,11 @@ export const RegisterUser = async (user) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(user)          //sending body with fields from user data to make the endpoint work correctly.
     };
     try {
 
-        const response = await fetch(`${root}auth/register`, clientData)
+        const response = await fetch(`${root}auth/register`, clientData)    //variable response with saved data from fetching info to endpoint route
 
         const data = await response.json()
 
@@ -60,7 +60,7 @@ export const GetProfile = async (token) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`          //adding token in authorization to pass the auth middleware in backend
         }
     }
 
