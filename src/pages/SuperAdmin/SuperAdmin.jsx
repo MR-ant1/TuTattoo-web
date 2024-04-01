@@ -53,17 +53,14 @@ export const SuperAdmin = () => {
     }
 
     return (
-        <>
             <div className="allUsersBackgroundDesign">
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                    <div>
-
+                    <div className="userGrid">
                         {users.slice(0, users.length).map(
                             user => {
                                 return (
-                                    <>
                                         <div className="userListDesign" key={user.id}>
                                             <UserCard
                                                 firstName={user.firstName}
@@ -78,14 +75,12 @@ export const SuperAdmin = () => {
                                                 />
                                             </div>
                                         </div>
-                                    </>
                                 )
                             })}
                     </div>
                 )
                 }
             </div>
-        </>
     )
 }
 

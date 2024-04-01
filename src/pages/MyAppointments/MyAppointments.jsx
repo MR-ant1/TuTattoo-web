@@ -59,11 +59,10 @@ export const MyAppointments = () => {
                 {dbData !== true ? (
                     <div>LOADING</div>
                 ) : (
-                    <div>
+                    <div className="appointmentsGrid">
                         {appointments.map(
                             appointment => {
                                 return (
-                                    <>
                                         <div className="appointmentsDeleteListDesign" key={appointment.id}>
                                             <AppointmentCard
                                                 appointmentDate={appointment.appointmentDate}
@@ -77,7 +76,6 @@ export const MyAppointments = () => {
                                                 />
                                             </div>
                                         </div>
-                                    </>
                                 )
                             })}
                     </div>

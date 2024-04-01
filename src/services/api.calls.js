@@ -4,7 +4,7 @@ const root = "http://localhost:4001/api/"
 export const RegisterUser = async (user) => {
 
     const clientData = {
-        method: "POST",
+        method: "POST",                     //Method used. In this case POST
         headers: {
             "Content-Type": "application/json",
         },
@@ -189,7 +189,7 @@ export const DeleteAppointmentById = async (tokenData, id) => {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${tokenData?.token}`
+            "Authorization": `Bearer ${tokenData?.token}`   //In this call, id is send in params instead body like in previous functions
         }
     }
 
