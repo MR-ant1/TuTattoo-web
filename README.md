@@ -42,10 +42,12 @@ This Front-end proyect allows to create and to log in a user to interact with a 
 ### HOW TO DOWNLOAD AND RUN IT :mag: 
 
 Here you can find the link to THIS REPOSITORY:
-https://github.com/MR-ant1/TuTattoo-web.git
+
+- https://github.com/MR-ant1/TuTattoo-web.git
 
 and down here, the link to the backend repository and its README explaining how it works:
-https://github.com/MR-ant1/Tattoo-API.git
+
+- https://github.com/MR-ant1/Tattoo-API.git
 
 
 Follow the next steps to prepare the API's environment and make it work correctly:
