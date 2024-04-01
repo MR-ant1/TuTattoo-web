@@ -38,7 +38,7 @@ export const Home = () => {
                     {services.slice(0, services.length).map(      //Giving a limit to ensure that only brings the 5 existing services
                         service => {
                             return (
-                                <>
+                                <div key={service.id}>
                                     <Card                                       //Using card component designed before with its props in common folder.
                                         id={"Nª servicio: " + service.id}
                                         title={service.serviceName}
@@ -48,7 +48,7 @@ export const Home = () => {
                                             : navigate("/createAppointment")
                                         }
                                     />
-                                </>
+                                </div>
                             )
                         })}
                 </div>

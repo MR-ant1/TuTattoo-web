@@ -4,7 +4,7 @@ import { Home } from "../Home/Home"
 import { Register } from "../Register/Register"
 import { Login } from "../Login/Login"
 import { Profile } from "../Profile/Profile"
-import { NewAppointment } from "../CreateAppointment/CreateAppointment"
+import { NewAppointment } from "../CreateAppointment/Createappointment"
 import { MyAppointments } from "../MyAppointments/MyAppointments"
 import { SuperAdmin } from "../SuperAdmin/SuperAdmin"
 

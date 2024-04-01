@@ -128,6 +128,7 @@ npm i
 ``` bash
 npm run dev
 ```
+12. The password for any user in DB is aA123456
 
 </details>
 
@@ -208,6 +209,8 @@ Like its done in CInput, the props are given to the button to allow introduce re
 <summary>LOGIN</summary>
 
 Login use a similar structure with a function that contains user data in an object to send to backend four fields with the same structure we prepared in there. InputHandler function and checkerror are included too for fields email and password from user.
+
+USE THE PASSWORD aA123456 FOR ALL USERS IN DB
 
 ![alt text](img/LoginLogic.png)
 

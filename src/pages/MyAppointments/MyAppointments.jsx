@@ -63,7 +63,6 @@ export const MyAppointments = () => {
                         {appointments.map(
                             appointment => {
                                 return (
-                                    <>
                                         <div className="appointmentsDeleteListDesign" key={appointment.id}>
                                             <AppointmentCard
                                                 appointmentDate={appointment.appointmentDate}
@@ -77,7 +76,6 @@ export const MyAppointments = () => {
                                                 />
                                             </div>
                                         </div>
-                                    </>
                                 )
                             })}
                     </div>

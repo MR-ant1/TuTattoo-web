@@ -5,9 +5,10 @@ import './App.css'
 
 function App() {
 
+  //Locating both parts of our front. Header up area and body in rest of screen
   return (
     <>
-      <Header />
+      <Header />    
       <Body />
     </>
   )
