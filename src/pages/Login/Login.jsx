@@ -118,7 +118,7 @@ export const Login = () => {
       <CButton
         className={"cButtonDesign"}
         title={"Login"}
-        functionEmit={loginMe}    //Callig loginMe function when button is clicked
+        functionEmit={loginMe}    //Calling loginMe function when button is clicked
       />
       <div className="error">{msgError}</div>
     </div> 

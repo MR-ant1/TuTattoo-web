@@ -317,7 +317,7 @@ It works like myAppointments with a map iterating cards, but this time all users
 
 ### POSSIBLE IMPROVEMENTS :heavy_check_mark: 
 
-- Lists of users and appointments need a better design to not exceed the screen borders or show in groups.
+- Lists of users and appointments shows in grid, but if there's many cards, they go out the screen.
 - Web should be responsive, but in this academic proyect the main target is to make pages and components work.
 - When any user update his firstName, value in profile's header section should update too, but at the moment is necessary to logout and login again to see this componen updated.
 - Some of the info messages when success is true in any action, should have a different color than the error messages
