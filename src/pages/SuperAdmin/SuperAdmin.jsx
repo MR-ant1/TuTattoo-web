@@ -24,7 +24,7 @@ export const SuperAdmin = () => {
         if (dbData === false) {
             const getUserList = async () => {
                 try {
-                    const fetched = await GetUsers(tokenStorage)
+                    const fetched = await GetUsers(tokenStorage)    //Brings users and uses tokenStorage which contains token with the role that allows super admins
                     setUsers(fetched.data)
                     setDbData(true)
 
@@ -42,11 +42,11 @@ export const SuperAdmin = () => {
                 throw new Error("cant delete super admin")
             }
             // eslint-disable-next-line no-unused-vars
-            const fetched = await DeleteUserBySuperAdmin(tokenData, id)
-            
+            const fetched = await DeleteUserBySuperAdmin(tokenData, id) //Runs call to backend and send tokendata fot auth and user id to look the deleted user
+
             setUsers(
-                users.filter((user) => user.id !== id)
-            )
+                users.filter((user) => user.id !== id) 
+            )               //This filter returns a new array from the users data excepting the deleted user id when clicking. Card dissapears from view.
         } catch (error) {
             console.log(error)
         }
@@ -58,7 +58,7 @@ export const SuperAdmin = () => {
                     <div>LOADING</div>
                 ) : (
                     <div className="userGrid">
-                        {users.slice(0, users.length).map(
+                        {users.slice(0, users.length).map(  //Iteration of users with fetched data create a card for each object
                             user => {
                                 return (
                                         <div className="userListDesign" key={user.id}>
