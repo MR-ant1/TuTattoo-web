@@ -6,6 +6,7 @@ import { CInput } from "../../common/CInput/CInput";
 import { CButton } from "../../common/CButton/CButton";
 import { decodeToken } from "react-jwt";
 import { LoginUser } from "../../services/api.calls";
+import { RegisterButton } from "../../common/RegisterButton/RegisterButton";
 import "./Login.css"
 
 export const Login = () => {
@@ -16,9 +17,9 @@ export const Login = () => {
 
   // eslint-disable-next-line no-unused-vars
   const [tokenStorage, setTokenStorage] = useState(tokenData?.token)
-  
+
   //Fields that login endpoint in back would need defined in accesData variable
-  const [accessData, setAccessData] = useState({      
+  const [accessData, setAccessData] = useState({
     email: "",
     password: "",
   })
@@ -37,7 +38,7 @@ export const Login = () => {
   }, [tokenStorage])
 
   //inputHandler set the value in input to the variable of user to allow show in time value while typing
-  const inputHandler = (e) => {         
+  const inputHandler = (e) => {
     setAccessData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -62,12 +63,12 @@ export const Login = () => {
       }
 
       const fetched = await LoginUser(accessData);                //fetched is response given by back when running LoginUser with parameters introduced in input
-      if (fetched.success === true) {   
-      setMsgError(`Hola de nuevo, nos alegra verte por TuTattoo!`) //if success is true, a welcome message throws and redirects to home. If not, user stays on login.
-      setTimeout(() => {
-        navigate("/")
-      }, 1000)
-      }else throw new Error("Email o password incorrectos")       //Error throwed when credentials are wrong
+      if (fetched.success === true) {
+        setMsgError(`Hola de nuevo, nos alegra verte por TuTattoo!`) //if success is true, a welcome message throws and redirects to home. If not, user stays on login.
+        setTimeout(() => {
+          navigate("/")
+        }, 1000)
+      } else throw new Error("Email o password incorrectos")       //Error throwed when credentials are wrong
 
 
       const decodificado = decodeToken(fetched.token)
@@ -79,11 +80,11 @@ export const Login = () => {
 
       localStorage.setItem("passport", JSON.stringify(tokenData))   //saving tokenData variable in localStorage to access from other views
 
-      
+
 
     } catch (error) {
       setMsgError(error.message);
-      {console.log(error)}
+      { console.log(error) }
     }
   };
 
@@ -121,6 +122,12 @@ export const Login = () => {
         functionEmit={loginMe}    //Calling loginMe function when button is clicked
       />
       <div className="error">{msgError}</div>
-    </div> 
+      <div className="noAccountMsg">Si no dispones de una cuenta, haz click aqui abajo</div>
+      <RegisterButton
+        className={"registerButtonDesign"}
+        title={"Register"}
+        functionemit={() => navigate("/register")}
+      />
+    </div>
   );
 }

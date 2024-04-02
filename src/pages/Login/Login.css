@@ -18,10 +18,20 @@
     height: 4em;
     display: flex;
     align-items: flex-start;
+    font-size: 1.1em;
     font-weight: bold;
     color: rgb(255, 255, 255);
 }
 
 .infoMsg {
     color:green
+}
+
+.noAccountMsg {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+
+    margin-top: 6em;
+    margin-bottom: 1.5em;
 }
