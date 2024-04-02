@@ -1,4 +1,3 @@
-
 .registerBackgroundDesign {
     height: 90vh;
     width: 100vw;
@@ -12,4 +11,16 @@
 .error {
     height: 1em;
     color: red
+}
+
+.accountMsg {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+
+    margin-top: 1em;
+}
+
+.registerButtonDesign {
+    margin-top: 1em;
 }

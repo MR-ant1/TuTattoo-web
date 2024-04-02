@@ -5,6 +5,7 @@ import { CButton } from "../../common/CButton/CButton"
 import { validame } from "../../utils/functions"
 import { RegisterUser } from "../../services/api.calls"
 import { useNavigate } from "react-router-dom"
+import { RegisterButton } from "../../common/RegisterButton/RegisterButton";
 import "./Register.css"
 
 export const Register = () => {
@@ -118,6 +119,12 @@ export const Register = () => {
                 functionEmit={registration}
             />
             <div className="error">{msgError}</div>
+            <div className="accountMsg">Si ya tienes cuenta, haz click aqui abajo</div>
+      <RegisterButton
+        className={"registerButtonDesign"}
+        title={"Login"}
+        functionemit={() => navigate("/login")}
+      />
         </div>
     )
 
