@@ -1,9 +1,14 @@
 #root {
-  max-width: 1280px;
+  max-width: 100vw;
+  max-height: 100vh;
   margin: 0;
   padding: 0;
   text-align: center;
   background-image: url('../public/img/BackgroundFront.jpeg');
   background-size: cover;
   background-position: initial;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
