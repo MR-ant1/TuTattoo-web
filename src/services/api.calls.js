@@ -1,5 +1,5 @@
 
-const root = "https://api-TuTattoo.up.railway.app/api/"
+const root = "https://api-tutattoo.up.railway.app/api/"
 
 export const RegisterUser = async (user) => {
 
