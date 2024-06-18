@@ -83,7 +83,6 @@ export const Profile = () => {
             const fetched = await UpdateProfile(tokenStorage, user) 
 
             setMsgError(fetched.message)
-            console.log(fetched)
 
             setTimeout(() => {
                 setMsgError("")

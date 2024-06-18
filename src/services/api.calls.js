@@ -1,5 +1,5 @@
 
-const root = "http://localhost:4001/api/"
+const root = "https://api-TuTattoo.up.railway.app/api/"
 
 export const RegisterUser = async (user) => {
 
@@ -25,8 +25,6 @@ export const RegisterUser = async (user) => {
     } catch (error) {
         return error;
     }
-
-
 }
 
 export const LoginUser = async (accessData) => {
