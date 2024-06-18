@@ -1,7 +1,6 @@
 .profileBackgroundDesign {
     height: 90vh;
     width: 100vw;
-    background-image: url('img/BackgroundFront.jpeg');
     display: flex;
     flex-direction: row;
     justify-content: center;

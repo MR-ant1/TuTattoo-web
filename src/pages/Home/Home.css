@@ -2,7 +2,6 @@
 .backgroundImage {
   height: 90vh;
   width: 100vw;
-  background-image: url('img/BackgroundFront.jpeg');
 
   flex-wrap: wrap;
 }

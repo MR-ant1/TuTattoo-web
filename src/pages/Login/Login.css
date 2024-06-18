@@ -1,8 +1,6 @@
 .loginBackground {
-    background-image: url('img/BackgroundFront.jpeg');
     height: 90vh;
     width: 100vw;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
     justify-content: center;
