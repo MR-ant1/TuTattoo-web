@@ -1,6 +1,6 @@
 # FRONT TUTATOO WEB
 
-![alt text](img/TitleImg.jpg)
+![alt text](./public/img/TitleImg.jpg)
 
 ### TARGET :dart:
 The target of this proyect is to recreate the frontend of a basic e-shop in which you can book new appointments and see services from the shop.
@@ -37,7 +37,7 @@ This Front-end proyect allows to create and to log in a user to interact with a 
 
 ### DB diagram :clipboard:
 
-![alt text](img/db_migrations.png)
+![alt text](./public/img/db_migrations.png)
 
 ### HOW TO DOWNLOAD AND RUN IT :mag: 
 
@@ -136,36 +136,36 @@ npm run dev
 
 First of all, we created the react proyect with command "npm create vite@latest and filled the main file to allow our app work.
 
-![alt text](img/MainFile.png)
+![alt text](./public/img/MainFile.png)
 
 BrowserRouter is imported and added in main to allow app navigate between all pages that we created later.
 
 Then, a variable "app" in file app.js was created to be linked with express, to allow the server work properly.
 
-![alt text](img/AppFile.png)
+![alt text](./public/img/AppFile.png)
 
 "app" will contain the main sections in our screen, Body and Header. This file will control the web display and will make possible to add properties and designs to both sections later.
 
 Once we have our app file created, we add "Body" and "Header" files to define what this sections have to show. First we have Body file, which not contains design data and only have the different routes from each page to navigate. So we find that body acts like a router that will show a view depending of the route we have on our url.
 
-![alt text](img/BodyFile.png)
+![alt text](./public/img/BodyFile.png)
 
 You can see in the image all the different views that this front can show and its routes to navigate. Note that the first Route is introduced to relocate any other route not described in this file to home page with route "/".
 
 Then, header is created. This section will show always in our web to allow moving to all sections.
 
-![alt text](img/HeaderFile1.png)
+![alt text](./public/img/HeaderFile1.png)
 
 In this photo from the first part of header, we can see how tokenData is brought to allow show one from two possibles header and how logOut function is defined to make this button delete token and get out of a logged user. We also can see the header display for the cases where user owns a tokenData from login before. In this case, all user sections will show in header(profile with user name, myAppointments, logOut and, if user is super_admin, same name section to delete users)
 
-![alt text](img/HeaderFile2.png)
+![alt text](./public/img/HeaderFile2.png)
 
 in this other picture, we can see what happens if user doesn't own a token, when what user will se is home, login and register sections.
 Home page is at the begin of return and out of conditions because will be showed always no matter if user owns a token or not.
 
 To make the body routes work, we'll need BrowserRoutes we definded before and the Navigator file which contains the logic to change a page depending of the new page selected's "sendTo" instruccion
 
-![alt text](img/NavigatorFile.png)
+![alt text](./public/img/NavigatorFile.png)
 
 This allows to invoque navigate variable that sends to the route we give inside ("/")
 
@@ -181,23 +181,23 @@ The remaining work consist on implement pages and logic to make them work. I wil
 <details>
 <summary>REGISTER</summary>
 
-![alt text](img/RegisterLogic.png)
+![alt text](./public/img/RegisterLogic.png)
 
-![alt text](img/RegisterView.png)
+![alt text](./public/img/RegisterView.png)
 
 In register page, we create a function where first all user, error and action functions are defined, and then in the return, 4 inputs and a custom button are throwed.
 
-![alt text](img/RegisterReturn.png)
+![alt text](./public/img/RegisterReturn.png)
 
 InputHandler function make the inputs able to dinamicly change while someone types in each key value from user object. Same use from InputHandler is given to check any error when we go outside the field. Both functions are defined in our CIunput model:
 
-![alt text](img/CInputFile.png)
+![alt text](./public/img/CInputFile.png)
 
 OnChangeFunction holds the typing change functionality and onBlurFunction, the event of check error when leaving each field.
 
 Finally, the CButton contains "registration" function, making it run when we click in this component.
 
-![alt text](img/CButtonFile.png)
+![alt text](./public/img/CButtonFile.png)
 
 Like its done in CInput, the props are given to the button to allow introduce registration function and add some design.
 
@@ -212,21 +212,21 @@ Login use a similar structure with a function that contains user data in an obje
 
 USE THE PASSWORD aA123456 FOR ALL USERS IN DB
 
-![alt text](img/LoginLogic.png)
+![alt text](./public/img/LoginLogic.png)
 
-![alt text](img/LoginView.png)
+![alt text](./public/img/LoginView.png)
 
 The loginMe function sends to api.calls file the data introduced in inputs (after each field passes its checkError function), and there, LoginUser makes the conection with backend and send JSON data.
 
 Then, if accessData is correct, backend response contains the token info that is saved into our tokenData variable in localstorage. That is how we will be able to get user,s name, id and role in other pages.
 
-![alt text](img/LoginUser.png)
+![alt text](./public/img/LoginUser.png)
 
 In api.calls, the function LoginUser defines a clientData variable with the required formatted data needed our backend's client. (in this case method, headers and body with inputs data from register page).
 
 With al this functionality, Login throws two fields and a register me button, with same structure that in register.
 
-![alt text](img/LoginReturn.png)
+![alt text](./public/img/LoginReturn.png)
 
 -----------------------------------------
 
@@ -235,9 +235,9 @@ With al this functionality, Login throws two fields and a register me button, wi
 <details>
 <summary>PROFILE</summary>
 
-![alt text](img/ProfileLogic.png)
+![alt text](./public/img/ProfileLogic.png)
 
-![alt text](img/ProfileView.png)
+![alt text](./public/img/ProfileView.png)
 
 Profile page works similar to login and register page throwing 3 inputs with user info bringed from database with useEffect function when page loads. The main difference is the new function Upload which sends new data typed in inputs like other ones but using a PUT method to upload values in DB.
 Email field is not editable so a disabled prop were addded to not allow this action.
@@ -249,9 +249,9 @@ Email field is not editable so a disabled prop were addded to not allow this act
 <details>
 <summary>HOME</summary>
 
-![alt text](img/HomePage.png)
+![alt text](./public/img/HomePage.png)
 
-![alt text](img/HomeView.png)
+![alt text](./public/img/HomeView.png)
 
 This page acts as the land page were user first access, and as a services showcase. Only allows go to book a service if user logged in before.
 
@@ -259,7 +259,7 @@ Home function first part is different and doesn't need inputHandler function. We
 
 The main difference in this and other pages, is that return doesnt throw inputs. This time services Data is defined up as an empty array, and a map method is in return iterating a card for each object bringed by database with keys defined in card component previously defined in its own file:
 
-![alt text](img/CardFile.png)
+![alt text](./public/img/CardFile.png)
 
 -----------------------------------------
 
@@ -270,9 +270,9 @@ The main difference in this and other pages, is that return doesnt throw inputs.
 
 This page uses the same structure that register uses with inputs. Throws two inputs for Date and service user wants in his appointment. Button creates a new appointment if no errors are throwed by inputs. The format needed is delcared in placeholder text to help you.
 
-![alt text](img/CreateAppointmentPage.png)
+![alt text](./public/img/CreateAppointmentPage.png)
 
-![alt text](img/CreateAppointmentView.png)
+![alt text](./public/img/CreateAppointmentView.png)
 
 -----------------------------------------------
 
@@ -283,13 +283,13 @@ This page uses the same structure that register uses with inputs. Throws two inp
 
 In this page, appointments for the user logged are located and showed. There is a button for each appointment which allows deleting it and inmediately dissapears from db and screen. The way cards are displayed is like in home, with a map where we define an appointment card to be filled by each back item in response.
 
-![alt text](img/MyAppointmentsReturn.png)
+![alt text](./public/img/MyAppointmentsReturn.png)
 
 The delete function calls to Delete function in function and execute the endpoint from back. The getAppointments function executes when page is loaded with useEffect. Delete waits to be called in CButton
 
-![alt text](img/MyAppointmentsLogic.png)
+![alt text](./public/img/MyAppointmentsLogic.png)
 
-![alt text](img/MyAppointmentsView.png)
+![alt text](./public/img/MyAppointmentsView.png)
 
 -------------------------------------------------
 
@@ -300,9 +300,9 @@ The delete function calls to Delete function in function and execute the endpoin
 
 It works like myAppointments with a map iterating cards, but this time all users are bringed from DB and only super_admin (access controled at beginning of function) can delete any user excepting himself from DB. There are a Card and a CButton on each element from the map so each user has a delete button on his side.
 
-![alt text](img/SuperAdminPage.png)
+![alt text](./public/img/SuperAdminPage.png)
 
-![alt text](img/SuperAdminView.png)
+![alt text](./public/img/SuperAdminView.png)
 
 ---------------------------------------------------
 
