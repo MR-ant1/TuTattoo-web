@@ -1,4 +1,3 @@
-
 .backgroundImage {
   height: 90vh;
   width: 100vw;
@@ -6,9 +5,8 @@
 }
 
 .servicesCardsDesign {
-    margin:0em;
-    padding: 0em;
-    width: 100vw;
-    height: 88vh;
-  }
-  
+  margin: 0em;
+  padding: 0em;
+  width: 100vw;
+  height: 88vh;
+}
